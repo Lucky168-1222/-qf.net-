@@ -5,13 +5,42 @@ use app\index\controller\Auth;	//引入基类
 use think\Ucpaas;//短信验证
 use app\index\model\User;
 use think\captcha;		//引入的验证码基类
-use \traits\controller\Jump;
+use think\Session;	//引入Session文件
 
 //登录、注册、找回密码
 class Register extends Auth
 {
 
 	protected $user;
+
+
+	//[登录用户检测]
+	public function checkLogin()
+	{
+
+		$loginUser = $_GET['username'];
+		$phone = $_GET['phone'];
+		$user = new User();
+		$result = $user::checkLoginUser($loginUser,$phone);
+		echo json_encode($result);
+	}
+
+	//登录密码检测
+	public function checkLoginPwd()
+	{
+		$loginUser = $_GET['username'];
+		$loginPwd = md5($_GET['password']);
+		$user = new User();
+		$result = $user::checkLogin($loginUser,$loginPwd);
+		if ($result) {
+			session('user_id',$result['user_id']);
+			$result = ['data'=>true];
+		}else{
+			$result = ['data'=>false];
+		}
+		 echo json_encode($result);
+	}
+
 	//提交注册到库里
 	public function subRegister()
 	{ 
@@ -24,12 +53,35 @@ class Register extends Auth
 		}
 		$ip = ip2long($ip);
 		$time = time();
-		// echo $ip.'<br />'.$time;
 		$user = new User();
-		$result = $user::submitReg($username,$password,$phone,$ip,$time);
-		echo json_encode($result);
+		$data = $user::submitReg($username,$password,$phone,$ip,$time);
+		echo json_encode($data);
 	}
 	
+	//[成功跳转页面]
+	public function chenggong()
+	{
+		$this->success('注册成功，正在为您跳转至登录页面','index/register/login');
+	}
+
+	//[失败跳转页面]
+	public function shibai()
+	{
+		$this->error('注册失败');
+	}
+
+	//[成功跳转页面]
+	public function loginChenggong()
+	{
+		$this->success('登录成功','index/index/index');
+	}
+
+	//[失败跳转页面]
+	public function loginShibai()
+	{
+		$this->error('无效登录');
+	}
+
 	//手机获取验证码
 	public function Message()
 	{	
@@ -59,8 +111,9 @@ class Register extends Auth
 	//检查验证码	
 	public function check($code='')
     {
+
         $captcha = new \think\captcha\Captcha();
-        
+        	$code = $_GET['code'];
             if (!$captcha->check($code)) {
                 $data = ['errcode'=>1,'info'=>'<a style="color:red;">验证码不正确</a>'];
             } else {

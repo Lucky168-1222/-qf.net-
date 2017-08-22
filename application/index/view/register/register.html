@@ -34,6 +34,8 @@
             <input type="hidden" name="yzm" id="yzm">
             <button id="get">获取短信验证码</button>
             <span id="check_phone" ></span>
+            <script type="text/javascript">
+            </script>
         </div>
     	<div class="psw psw3">
         	<p class="psw-p1">验证码</p>
@@ -94,72 +96,69 @@
                     $('#check_repass').html('<a style="color:#00CB00;">已验证</a>');
                 }
             })
-            // var count = null;   //手机验证标识
+            var count = null;   //手机验证标识
             // // //判断短信验证号码
-            // $('#phone').blur(function(){     
-            //     var check_phone = /^(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
-            //     if (!check_phone.test($('#phone').val())) {
-            //         $('#check_phone').html('<a style="color:red;">手机号码不正确</a>');
-            //     }else{
-            //          $('#check_phone').html('<a style="color:#00DB00;">已验证</a>');
-            //         //接受返回的验证码
-            //          $("#get").click(function(){
-            //         var phone = $("#phone").val();
-            //         $.post("{:url('index/register/Message')}",{phone:phone},
-            //             function(obj){
-            //              count = obj['send'];
+            $('#phone').blur(function(){     
+                var check_phone = /^(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+                if (!check_phone.test($('#phone').val())) {
+                    $('#check_phone').html('<a style="color:red;">手机号码不正确</a>');
+                }else{
+                     $('#check_phone').html('<a style="color:#00DB00;">已验证</a>');
+                    //接受返回的验证码
+                     $("#get").click(function(){
+                        $("#get").css('background','#00DB00');
+                    var phone = $("#phone").val();
+                    $.post("{:url('index/register/Message')}",{phone:phone},
+                        function(obj){
+                         count = obj['send'];
                         
-            //             },'json');
-            //         });
-            //     }
-            // })
+                        },'json');
+                    });
+                }
+            })
                
  
             // //手机号验证码的判断
-            // $('#code').blur(function(){
-            //     if ($('#code').val() != count) {
-            //         $('#check_code').html('<a style="color:red;">手机验证码不正确</a>');
-            //     }else{
-            //         $('#check_code').html('<a style="color:#00DB00;">已验证</a>');
-            //     }
-            // })
-            // //实现点击短信60秒倒计时
+            $('#code').blur(function(){
+                if ($('#code').val() != count) {
+                    $('#check_code').html('<a style="color:red;">手机验证码不正确</a>');
+                }else{
+                    $('#check_code').html('<a style="color:#00DB00;">已验证</a>');
+                }
+            })
+            //实现点击短信60秒倒计时
             
 
-            // //检查验证码
-            // $('#yzm_id').blur(function(){
-            //     var code = $('#yzm_id').val();
-            //    $.get("{:url('index/register/check')}",{code:code},function(data){
-            //            $('#check_yzm').html(data.info);
-            //    },'json'); 
-            // })
+            //检查验证码
+            $('#yzm_id').blur(function(){
+                var code = $('#yzm_id').val();
+               $.get("{:url('index/register/check')}",{code:code},function(data){
+                       $('#check_yzm').html(data.info);
+               },'json'); 
+            })
             
 
             //注册提交
-            var oBut = document.getElementById('re_id');
-            oBut.onclick = function(){
+            $('#re_id').click(function(){ 
+                $('#re_id').css('background','red');
                 // var data = [];  //标识
                 if($('#username').val() != '' && $('#password').val() != '' && $('#repassword').val() != '' && $('#phone').val() != '' && $('#code').val() != '' && $('#yzm_id').val() != '' ){
                     
                     $.post("{:url('index/register/subRegister')}",{username:$('#username').val(),password:$('#password').val(),phone:$('#phone').val()},function(data){
-                            
-                            if(data == 1){
-                                document.location = "{:url('index/index')}";
-                              
-                            }else{
-                                document.location = "{:url('index/register/register')}"
-                            }
+                        if (data == 1) {
+                            document.location = "{:url('index/register/chenggong')}";
+                        }else{
+                            document.location = "{:url('index/register/shibai')}";
+                        }
                     },'json');
-
-
                 }else{
                     $('*').focus();
                 }
                
-            }
+            })
 
         </script>
-        <p class="sign-in">已有账号？请<a href="#">登录</a></p>
+        <p class="sign-in">已有账号？请<a href="{:url('index/register/login')}">登录</a></p>
     </div>
     
     <!--底部服务-->

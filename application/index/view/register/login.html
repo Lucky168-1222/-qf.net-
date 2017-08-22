@@ -10,21 +10,76 @@
 </head>
 
 <body>
-
+    {include file="index/head"}
 
 	<div class="sign-con w1200">
 	<img src="__IMAGE__PATH__/logn-tu.gif" class="sign-contu f-l" />
     <div class="sign-ipt f-l">
     	<p>用户名</p>
-        <input type="text" placeholder="手机号/邮箱" />
+        <input type="text" id="user_id" placeholder="手机号/用户名" />
+        <div id="check_user" ></div>
         <p>密码</p>
-        <input type="text" placeholder="密码可见" /><br />
+        <input type="password" id="pwd_id" placeholder="密码可见" /><br />
+        <div id="check_pwd" ></div>
+
         <button class="slig-btn" id="login_js" >登录</button>
+
         <script type="text/javascript">
-            var oLogin = document.getElementById('login_js');
-            oLogin.onclick = function(){
-                document.location = "{:url('index/index')}";
-            }
+            var user = null;
+            var pass = null;
+            //检查用户是否存在 
+            $('#user_id').blur(function(){
+                if ($('#user_id').val() == '') { 
+                    $('#check_user').html('<a style="color:red;" >不可空</a>');
+                }else{
+                    $.get("{:url('index/register/checkLogin')}",{username:$('#user_id').val(),phone:$('#user_id').val()},function(data){
+                            // console.log(data.phone);
+                            //用户号
+                            if (data.user_name != $('#user_id').val()) {                              
+                                if (data.phone == $('#user_id').val()) {
+                                    $('#check_user').html("<a style='color:#00DB00;'>已验证</a>");
+                                    user = true;
+                                }else{
+                                    $('#check_user').html("<a style='color:red;'>不存在</a>"); 
+                                    user = false;
+                                }                             
+                            }else{
+                                $('#check_user').html("<a style='color:#00DB00;'>已验证</a>");
+                                user = true;
+                            }
+                    },'json');
+                }
+            })
+           
+
+            //检测密码提交
+            $('#pwd_id').blur(function(){
+                if ($('#pwd_id').val() == '') {
+                    $('#check_pwd').html('<a style="color:red;" >不可空</a>');
+                }else{
+                         $.get("{:url('index/register/checkLoginPwd')}",{username:$('#user_id').val(),password:$('#pwd_id').val()},function(data){
+                                if (data.data) {
+                                    $('#check_pwd').html('<a style="color:#00DB00;" >已验证</a>'); 
+                                    pass = true;
+                                }else{
+                                    $('#check_pwd').html('<a style="color:red;" >密码不正确</a>');
+                                    pass = false;
+                                }
+                        },'json');
+                    }
+            })
+            
+
+            //提交
+            $('#login_js').click(function(){
+                $('#login_js').css('background','red');
+                if (user && password) {
+                    document.location = "{:url('index/register/loginChenggong')}";  
+                }else{
+                    $('*').focus();
+                }
+            })
+
         </script>
         <p>没有账号？请<a href="{:url('index/register/register')}">注册</a><a href="{:url('index/register/pass')}" class="wj">忘记密码？</a></p>
         <div class="sign-qx">
