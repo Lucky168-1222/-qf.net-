@@ -148,6 +148,7 @@ return [
         '__FONT__PATH__'   =>  'http://qf.net/static/index/font',    //前台字体路径
         '__IMAGE__PATH__'  =>  'http://qf.net/static/index/images',  //前台图像路径
         '__SKIN__PATH__'   =>  'http://qf.net/static/index/skin',    //前台皮肤路径
+        '__UPLOAD__PATH__' =>  'http://qf.net/public/',   //前台上传头像路径
         '__CSS__BUS__'     =>  'http://qf.net/static/bus/css',  //商家入驻CSS路径
         '__IMAGE__BUS__'     =>  'http://qf.net/static/bus/images',  //商家入驻CSS路径
         '__JS__BUS__'     =>  'http://qf.net/static/bus/js',  //商家入驻CSS路径

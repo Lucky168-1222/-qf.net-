@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>钱峰网-收货管理</title>
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/index.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
-<script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
-<script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>钱峰网-收货管理</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__PATH__/index.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
+    <script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+    <style type="text/css">
+            #tianjia {width:210px;height:45px;background:#F5A81D;font-size:18px;line-height:45px;text-align:center;}
+
+    </style>
 </head>
 
 <body>
-{include file="index/head"} 
-
-
-     <!--内容开始-->
+    {include file="index/head"}
+    <!--内容开始-->
     <div class="personal w1200">
-    	<div class="personal-left f-l">
-        	<div class="personal-l-tit">
-            	<h3>个人中心</h3>
+        <div class="personal-left f-l">
+            <div class="personal-l-tit">
+                <h3>个人中心</h3>
             </div>
             <ul>
-            	<li class="per-li1"><a href="{:url('index/personal/personal')}">消息中心<span>></span></a></li>
+                <li class="per-li1"><a href="{:url('index/personal/personal')}">消息中心<span>></span></a></li>
                 <li class="per-li2"><a href="{:url('index/personal/persondata')}">个人资料<span>></span></a></li>
                 <li class="per-li3"><a href="{:url('index/personal/order')}">我的订单<span>></span></a></li>
                 <li class="per-li4"><a href="{:url('index/personal/reserve')}">我的预约<span>></span></a></li>
@@ -33,88 +36,19 @@
                 <li class="per-li10"><a href="{:url('index/personal/integral')}">会员积分<span>></span></a></li>
             </ul>
         </div>
-    	<div class="management f-r">
-            <div class="tanchuang-con">
-                <div class="tc-title">
-                    <h3>我的收货地址</h3>
+        <div class="management f-r">   
+                <div id="tianjia"  >
+                  <a href="JavaScript:;" xiugai="" style="color:white;">添加收货地址</a>
                 </div>
-                <font class="xinxi">请认真填写以下信息！</font>
-                <ul class="tc-con2">
-                    <li class="tc-li1">
-                        <p class="l-p">所在地区<span>*</span></p>
-                        <div class="xl-dz">
-                            <div class="dz-left f-l">
-                                <p>新疆</p>
-                                <ul>
-                                    <li class="current"><a href="#">新疆</a></li>
-                                    <li><a href="#">甘肃</a></li>
-                                    <li><a href="#">宁夏</a></li>
-                                    <li><a href="#">青海</a></li>
-                                    <li><a href="#">重庆</a></li>
-                                    <li><a href="#">长寿</a></li>
-                                </ul>
-                            </div>
-                            <div class="dz-right f-l">
-                                <p>乌鲁木齐</p>
-                                <ul>
-                                    <li class="current"><a href="#">乌鲁木齐</a></li>
-                                    <li><a href="#">昌吉</a></li>
-                                    <li><a href="#">巴音</a></li>
-                                    <li><a href="#">郭楞</a></li>
-                                    <li><a href="#">伊犁</a></li>
-                                    <li><a href="#">阿克苏</a></li>
-                                    <li><a href="#">喀什</a></li>
-                                    <li><a href="#">哈密</a></li>
-                                    <li><a href="#">克拉玛依</a></li>
-                                    <li><a href="#">博尔塔拉</a></li>
-                                    <li><a href="#">吐鲁番</a></li>
-                                    <li><a href="#">和田</a></li>
-                                    <li><a href="#">石河子</a></li>
-                                    <li><a href="#">克孜勒苏</a></li>
-                                    <li><a href="#">阿拉尔</a></li>
-                                    <li><a href="#">五家渠</a></li>
-                                    <li><a href="#">图木舒克</a></li>
-                                    <li><a href="#">库尔勒</a></li>
-                                    <div style="clear:both;"></div>
-                                </ul>
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </li>
-                    <li class="tc-li1">
-                        <p class="l-p">详细地址<span>*</span></p>
-                        <textarea class="textarea1" placeholder="请如实填写您的详细信息，如街道名称、门牌号、楼层号和房间号。"></textarea>
-                        <div style="clear:both;"></div>
-                    </li>
-                    <li class="tc-li1">
-                        <p class="l-p">邮政编码<span></span></p>
-                        <input type="text" />
-                        <div style="clear:both;"></div>
-                    </li>
-                    <li class="tc-li1">
-                        <p class="l-p">收货人姓名<span>*</span></p>
-                        <input type="text" />
-                        <div style="clear:both;"></div>
-                    </li>
-                    <li class="tc-li1">
-                        <p class="l-p">联系电话<span>*</span></p>
-                        <input type="text" />
-                        <div style="clear:both;"></div>
-                    </li>
-                </ul>
-                <button class="btn-pst2" id="but_js">保存</button>
                 <script type="text/javascript">
-                var oBut = document.getElementById('but_js');
-                oBut.onclick = function(){
-                    document.location = "{:url('index/personal/address')}";
-                }
+                    $('#tianjia').click(function(){
+                        $('#tianjia').css('background','red');
+                    })
                 </script>
-            </div>
             <div class="man-info">
-            	<font>您已经保存三个地址！</font>
+               
                 <div class="man-if-con">
-                	<div class="man-tit">
+                    <div class="man-tit">
                         <p class="p1">收货人</p>
                         <p class="p2">所在地区</p>
                         <p class="p3">详细地址</p>
@@ -123,117 +57,477 @@
                         <p class="p6">操作</p>
                     </div>
                     <ul class="man-ul1">
-                    	<li>
-                        	<p class="p1">赵珍珍</p>
-                        	<p class="p2">重庆 重庆市 南岸区</p>
-                        	<p class="p3">南坪左岸阳光c2-10-3</p>
-                        	<p class="p4">563000</p>
-                        	<p class="p5">18983945092</p>
-                        	<p class="p6">
-                            	<a href="#">修改</a> | 
-                            	<a href="#">删除</a>
-                            </p>
-                            <p class="p7"><a href="#">默认地址</a></p>
-                            <div style="clear:both;"></div>
-                        </li>
+                        {volist name='ergodic' id='vo'}
                         <li>
-                        	<p class="p1">赵珍珍</p>
-                        	<p class="p2">重庆 重庆市 南岸区 南坪街道</p>
-                        	<p class="p3">南岸区南坪福红路19号乙单元7-2</p>
-                        	<p class="p4">000000</p>
-                        	<p class="p5">18983945092</p>
-                        	<p class="p6">
-                            	<a href="#">修改</a> | 
-                            	<a href="#">删除</a>
+                            <p class="p1">{$vo['ress_name']}</p>
+                            <p class="p2">{$vo['province']} {$vo['city']}</p>
+                            <p class="p3">{$vo['detailed_ress']}</p>
+                            <p class="p4">{$vo['ress_office']}</p>
+                            <p class="p5">{$vo['ress_phone']}</p>
+                            <p class="p6">
+                            <button class="pay-xdz-btn personal-l-tit" value="{$vo['ress_id']}">修改</button>
+                            <button class="personal-l-tit" value="" >删除</button>
                             </p>
                             <div style="clear:both;"></div>
                         </li>
-                        <li>
-                        	<p class="p1">赵珍珍</p>
-                        	<p class="p2">浙江省 杭州市 余杭区崇贤街道</p>
-                        	<p class="p3">崇贤镇大安工业区彩诗纺织有限公司</p>
-                        	<p class="p4">311108</p>
-                        	<p class="p5">18983945092</p>
-                        	<p class="p6">
-                            	<a href="#">修改</a> | 
-                            	<a href="#">删除</a>
-                            </p>
-                            <div style="clear:both;"></div>
-                        </li>
+
+                        {/volist}
                     </ul>
                 </div>
+
             </div>
+            <br>
+            <!--分页-->
+            <div class="pag-left f-l" style="margin-left:300px;background:#F5A81D;" ><ul class="left-m f-l">{$page}</ul></div>         
         </div>
         <div style="clear:both;"></div>
     </div>
-    
     <!--底部服务-->
     <div class="ft-service">
-    	<div class="w1200">
-        	<div class="sv-con-l2 f-l">
-            	<dl>
-                	<dt><a href="#">新手上路</a></dt>
+        <div class="w1200">
+            <div class="sv-con-l2 f-l">
+                <dl>
+                    <dt><a href="#">新手上路</a></dt>
                     <dd>
-                    	<a href="#">购物流程</a>
-                    	<a href="#">在线支付</a>
+                        <a href="#">购物流程</a>
+                        <a href="#">在线支付</a>
                     </dd>
                 </dl>
                 <dl>
-                	<dt><a href="#">配送方式</a></dt>
+                    <dt><a href="#">配送方式</a></dt>
                     <dd>
-                    	<a href="#">货到付款区域</a>
-                    	<a href="#">配送费标准</a>
+                        <a href="#">货到付款区域</a>
+                        <a href="#">配送费标准</a>
                     </dd>
                 </dl>
                 <dl>
-                	<dt><a href="#">购物指南</a></dt>
+                    <dt><a href="#">购物指南</a></dt>
                     <dd>
-                    	<a href="#">常见问题</a>
-                    	<a href="#">订购流程</a>
+                        <a href="#">常见问题</a>
+                        <a href="#">订购流程</a>
                     </dd>
                 </dl>
                 <dl>
-                	<dt><a href="#">售后服务</a></dt>
+                    <dt><a href="#">售后服务</a></dt>
                     <dd>
-                    	<a href="#">售后服务保障</a>
-                    	<a href="#">退款说明</a>
-                    	<a href="#">新手选购商品总则</a>
+                        <a href="#">售后服务保障</a>
+                        <a href="#">退款说明</a>
+                        <a href="#">新手选购商品总则</a>
                     </dd>
                 </dl>
                 <dl>
-                	<dt><a href="#">关于我们</a></dt>
+                    <dt><a href="#">关于我们</a></dt>
                     <dd>
-                    	<a href="#">投诉与建议</a>
+                        <a href="#">投诉与建议</a>
                     </dd>
                 </dl>
                 <div style="clear:both;"></div>
             </div>
-        	<div class="sv-con-r2 f-r">
-            	<p class="sv-r-tle">187-8660-5539</p>
-            	<p>周一至周五9:00-17:30</p>
-            	<p>（仅收市话费）</p>
-            	<a href="#" class="zxkf">24小时在线客服</a>
+            <div class="sv-con-r2 f-r">
+                <p class="sv-r-tle">187-8660-5539</p>
+                <p>周一至周五9:00-17:30</p>
+                <p>（仅收市话费）</p>
+                <a href="#" class="zxkf">24小时在线客服</a>
             </div>
             <div style="clear:both;"></div>
         </div>
     </div>
-    
     <!--底部 版权-->
     <div class="footer w1200">
-    	<p>
-        	<a href="#">关于我们</a><span>|</span>
-        	<a href="#">友情链接</a><span>|</span>
-        	<a href="#">宅客微购社区</a><span>|</span>
-        	<a href="#">诚征英才</a><span>|</span>
-        	<a href="#">商家登录</a><span>|</span>
-        	<a href="#">供应商登录</a><span>|</span>
-        	<a href="#">热门搜索</a><span>|</span>
-        	<a href="#">宅客微购新品</a><span>|</span>
-        	<a href="#">开放平台</a>
+        <p>
+            <a href="#">关于我们</a><span>|</span>
+            <a href="#">友情链接</a><span>|</span>
+            <a href="#">宅客微购社区</a><span>|</span>
+            <a href="#">诚征英才</a><span>|</span>
+            <a href="#">商家登录</a><span>|</span>
+            <a href="#">供应商登录</a><span>|</span>
+            <a href="#">热门搜索</a><span>|</span>
+            <a href="#">宅客微购新品</a><span>|</span>
+            <a href="#">开放平台</a>
         </p>
         <p>
-        	沪ICP备13044278号<span>|</span>合字B1.B2-20130004<span>|</span>营业执照<span>|</span>互联网药品信息服务资格证<span>|</span>互联网药品交易服务资格证
+            沪ICP备13044278号<span>|</span>合字B1.B2-20130004<span>|</span>营业执照<span>|</span>互联网药品信息服务资格证<span>|</span>互联网药品交易服务资格证
         </p>
     </div>
-</body>
+
+
+<!-- !修改地址-->
+
+    <div class="confirmation-tanchuang" xgdz2="">
+        <div class="tanchuang-bg"></div>
+        <div class="tanchuang-con" style="border:1px solid #999;" >
+            <div class="tc-title">
+                <h3>新增地址</h3>
+                <a href="JavaScript:;" dz-guan=""><img src="__IMAGE__PATH__/close-select-city.gif" /></a>
+                <div style="clear:both;"></div>
+            </div>
+            <ul class="tc-con2"   >
+                <li class="tc-li1">
+                    <p class="l-p">所在地区<span>*</span></p>
+                    <div class="xl-dz">
+                    <div>
+                        <select id="s_province" name="s_province"></select>
+                        <select id="s_city" name="s_city"></select>
+                        <select id="s_county" name="s_county"></select>
+                        <script class="resources library" src="__JS__PATH__/area.js" type="text/javascript"></script>
+                        <span id="checkRess" ></span>
+                        <script type="text/javascript">
+                        _init_area();
+                        </script>
+                    </div>
+                        <div style="clear:both;"></div>
+                    </div>
+
+                        <script type="text/javascript">
+                        var Gid = document.getElementById;
+                        var showArea = function() {
+                                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+                                    Gid('s_city').value + " - 县/区" +
+                                    Gid('s_county').value + "</h3>"
+                                Gid('s_county').setAttribute('onchange','showArea()');
+                            }
+                        </script>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                     <p class="l-p">详细地址<span>*</span></p>
+                        <textarea class="textarea1" id="content" placeholder="请如实填写您的详细信息，如街道名称、门牌号、楼层号和房间号." name="content" ></textarea>
+                        <span id="checkContent" ></span>
+                        <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">邮政编码<span></span></p>
+                    <input type="text" id="postOffice" name="postoff" />
+                    <span id="checkPost" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">收货人姓名<span>*</span></p>
+                        <input type="text" id="ress_name" name="ressName" />
+                        <span id="checkName" ></span>
+                        <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p"  >联系电话<span>*</span></p>
+                    <input type="text"   id="ress_phone"  name="phone" />
+                    <span id="checkPhone" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+            </ul>
+            <button class="btn-pst2" id="but_js">保存</button>
+        </div>
+    </div> 
+ <script type="text/javascript">
+                    //[选择地址]【省】
+                    $('#s_province').blur(function(){
+                        if ($('#s_province').val() == '省份') {
+                            $('#checkRess').html("<a style='color:red;font-size:16px;' >请选择</a>");
+                        }else{
+                            // s_province = $('#s_province').val();
+                            $('#checkRess').html("<a style='color:#00DB00;font-size:14px;' >已验证</a>");
+                        }
+                    })
+                    //【市】
+                    $('#s_city').blur(function(){
+                        if ( $('#s_city').val() == '地级市') {
+                            $('#checkRess').html("<a style='color:red;font-size:16px;' >请选择</a>");
+                        }else{
+                            // s_city = $('#s_city').val();
+                            $('#checkRess').html("<a style='color:#00DB00;font-size:14px;' >已验证</a>");
+                        }
+                    })
+                    //【县】
+                    $('#s_county').blur(function(){
+                        if ($('#s_county').val() == '市、县级市') {
+                            $('#checkRess').html("<a style='color:red;font-size:16px;' >请选择</a>");
+                        }else{
+                            // s_county = $('#s_county').val();
+                            $('#checkRess').html("<a style='color:#00DB00;font-size:14px;' >已验证</a>");
+                        }
+                    })
+                    //[详细地址]
+                    $('#content').blur(function(){
+                        if ($('#content').val() == '') {
+                            $('#checkContent').html('<a style="color:red;" >内容不为空</a>');
+                        }else{
+                            // content = $('#content').val();
+                            $('#checkContent').html('<a style="color:#00DB00;" >已验证</a>');
+                        }
+                    })
+                    //[邮政编码]
+                    $('#postOffice').blur(function(){
+                        var test = /^[0-9]{6}$/;
+                        if (!test.test($('#postOffice').val())) {
+                            $('#checkPost').html('<a style="color:red;" >邮政编码不正确</a>');
+                        }else{
+                            // postOffice = $('#postOffice').val();
+                            $('#checkPost').html('<a style="color:#00DB00;" >已验证</a>');
+                        }   
+                    })
+
+                    //[收货人姓名]
+                    $('#ress_name').blur(function(){
+                        if ($('#ress_name').val() == '') {
+                             $('#checkName').html('<a style="color:red;" >内容不为空</a>');
+                        }else{
+                            // ress_name = $('#ress_name').val();
+                            $('#checkName').html('<a style="color:#00DB00;" >已验证</a>');
+                        }
+                    })
+                    // var ress_phone = $('#ress_phone').val(); 
+                    //[联系电话]
+                    $('#ress_phone').blur(function(){
+                        var check_phone = /^(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+                        if (!check_phone.test($('#ress_phone').val())) {
+                            $('#checkPhone').html('<a style="color:red;">手机格式不正确</a>');
+                        }else{
+                            // ress_phone = $('#ress_phone').val(); 
+                            console.log($('#ress_phone').val());
+                            $('#checkPhone').html('<a style="color:#00DB00;">已验证</a>');
+                        }
+                    })
+                   
+
+                    //保存数据
+                    $('#but_js').click(function(){
+                        $('#but_js').css('background','#00DB00');
+                        if ($('#ress_phone').val() != '' && $('#ress_name').val() != '' && $('#postOffice').val() != '' && $('#content').val() != '' && $('#s_county').val() != '市、县级市' && $('#s_city').val() != '地级市' && $('#s_province').val() != '省份') {
+                            
+                            $.get("{:url('index/personal/ressAdd')}",
+                                {
+                                    ress_name:$('#ress_name').val(),
+                                    ress_phone:$('#ress_phone').val(),
+                                    ress_office:$('#postOffice').val(),
+                                    province:$('#s_province').val(),
+                                    city:$('#s_city').val(),
+                                    detailed_ress:$('#content').val()
+                                },
+                                function(data){
+                                if (data == 1) {
+                                    document.location = "{:url('index/personal/addSuccess')}";
+                                }else{
+                                     document.location = "{:url('index/personal/addError')}";
+                                }
+                            },'json');
+
+                        }else{
+                            $('*').focus();
+                        }
+                    })
+
+                </script>
+
+            <!--修改地址-->
+  <div class="confirmation-tanchuang" xgdz1="">
+        <div class="tanchuang-bg"></div>
+        {volist name='ergodic' id='vo'}
+        <div class="tanchuang-con">
+            <div class="tc-title">
+                <h3>修改地址</h3>
+                <a href="JavaScript:;" dz-guan=""><img src="__IMAGE__PATH__/close-select-city.gif" /></a>
+                <div style="clear:both;"></div>
+            </div>
+            
+            <ul class="tc-con2">
+               <li class="tc-li1">
+                    <p class="l-p">所在地区<span>*</span></p>
+                    <div class="xl-dz">
+                    <div>        
+                    </div>
+                        <input id="shengJi" type="text"  value="{$vo['province']}" />
+                        <span id="checkShengJi" ></span>
+                        <input type="text" id="shiJi" value="{$vo['city']}"  />
+                        <span id="checkShiJi" ></span>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">详细地址<span>*</span></p>
+                    <textarea class="textarea1" id="diZhi" placeholder="请如实填写您的详细信息，如街道名称、门牌号、楼层号和房间号。">{$vo['detailed_ress']}</textarea>
+                    <span id="checkDiZhi" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">邮政编码<span></span></p>
+                    <input type="text" id="youZhen" value="{$vo['ress_office']}" />
+                    <span id="checkYouZhen" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">收货人姓名<span>*</span></p>
+                    <input type="text" id="shouHuoRen" value="{$vo['ress_name']}" />
+                    <span id="checkShouHuoRen" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+                <li class="tc-li1">
+                    <p class="l-p">联系电话<span>*</span></p>
+                    <input type="text" id="dianHua" value="{$vo['ress_phone']}" />
+                    <span id="checkDianHua" ></span>
+                    <div style="clear:both;"></div>
+                </li>
+            </ul>
+
+            <button class="btn-pst2" id="TiJiao" >提交</button>
+        </div>
+        {/volist}
+    </div>
+        <script type="text/javascript">
+        $("#shengJi").hover(function(){
+         alert("进去了");
+        },
+        function(){
+         alert("出来了");
+        });
+                   
+                    //[选择地址]【省】
+                    $('#shengJi').blur(function(){
+                        alert(111);
+                        if ($('#shengJi').val() == '') {
+                            $('#checkShengJi').html("<a style='color:red;font-size:16px;' >请选择</a>");
+                        }else{
+                            
+                            $('#checkShengJi').html("<a style='color:#00DB00;font-size:14px;' >已验证</a>");
+                        }
+                    })
+                    //【市】
+                    $('#shiJi').blur(function(){
+                        if ($('#shiJi').val() == '') {
+                            $('#checkShiJi').html("<a style='color:red;font-size:16px;' >请选择</a>");
+                        }else{
+                            // s_city = $('#s_city').val();
+                            $('#checkShiJi').html("<a style='color:#00DB00;font-size:14px;' >已验证</a>");
+                        }
+                    })
+
+                    //[详细地址]
+                    $('#diZhi').blur(function(){
+                        if ($('#diZhi').val() == '') {
+                            $('#checkDiZhi').html('<a style="color:red;" >内容不为空</a>');
+                        }else{
+                            // content = $('#content').val();
+                            $('#checkDiZhi').html('<a style="color:#00DB00;" >已验证</a>');
+                        }
+                    })
+                    //[邮政编码]
+                    $('#youZhen').blur(function(){
+                        var test = /^[0-9]{6}$/;
+                        if (!test.test($('#youZhen').val())) {
+                            $('#checkYouZhen').html('<a style="color:red;" >邮政编码不正确</a>');
+                        }else{
+                            // postOffice = $('#postOffice').val();
+                            $('#checkYouZhen').html('<a style="color:#00DB00;" >已验证</a>');
+                        }   
+                    })
+
+                    //[收货人姓名]
+                    $('#shouHuoRen').blur(function(){
+                        if ($('#shouHuoRen').val() == '') {
+                             $('#checkShouHuoRen').html('<a style="color:red;" >内容不为空</a>');
+                        }else{
+                            // ress_name = $('#ress_name').val();
+                            $('#checkShouHuoRen').html('<a style="color:#00DB00;" >已验证</a>');
+                        }
+                    })
+                    // var ress_phone = $('#ress_phone').val(); 
+                    //[联系电话]
+                    $('#dianHua').blur(function(){
+                        var check_phone = /^(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+                        if (!check_phone.test($('#dianHua').val())) {
+                            $('#checkDianHua').html('<a style="color:red;">手机格式不正确</a>');
+                        }else{
+                            // ress_phone = $('#ress_phone').val(); 
+                            console.log($('#ress_phone').val());
+                            $('#checkDianHua').html('<a style="color:#00DB00;">已验证</a>');
+                        }
+                    })
+                   
+
+                    //保存数据
+                    $('#TiJiao').click(function(){
+                        $('#TiJiao').css('background','#00DB00');
+                        if ($('#shengJi').val() != '' && $('#shiJi').val() != '' && $('#youZhen').val() != '' && $('#diZhi').val() != '' &&  $('#shouHuoRen').val() != '' && $('#dianHua').val() != '') {
+                            
+                            $.get("{:url('index/personal/updateRess')}",
+                                {
+                                    ress_name:$('#shouHuoRen').val(),
+                                    ress_phone:$('#dianHua').val(),
+                                    ress_office:$('#youZhen').val(),
+                                    province:$('#shengJi').val(),
+                                    city:$('#shiJi').val(),
+                                    detailed_ress:$('#diZhi').val()
+                                },
+                                function(data){
+                                
+                            },'json');
+
+                        }else{
+                            $('*').focus();
+                        }
+                    })
+
+                </script>
+  </body>
+
 </html>
+    <!-- <div class="tanchuang-con">
+                <div class="tc-title">
+                    <h3>我的收货地址</h3>
+                </div>
+                <font class="xinxi">请认真填写以下信息！</font>
+                <ul class="tc-con2">
+                    <li class="tc-li1">    
+                        <div class="info"> 
+                            <br>
+                            <div>
+                                <p class="l-p">选择地址<span>*</span></p>
+                                <select id="s_province" name="s_province"></select>
+                                <select id="s_city" name="s_city"></select>
+                                <select id="s_county" name="s_county"></select>
+                                <script class="resources library" src="__JS__PATH__/area.js" type="text/javascript"></script>
+                                <span id="checkRess" ></span>
+                                <script type="text/javascript">
+                                _init_area();
+                                </script>
+                            </div>
+                            <div id="show"></div>
+                        </div>
+                        <script type="text/javascript">
+                        var Gid = document.getElementById;
+                        var showArea = function() {
+                                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+                                    Gid('s_city').value + " - 县/区" +
+                                    Gid('s_county').value + "</h3>"
+                                Gid('s_county').setAttribute('onchange','showArea()');
+                            }
+                        </script>
+                    </li>
+
+                    <li class="tc-li1">
+                        <p class="l-p">详细地址<span>*</span></p>
+                        <textarea class="textarea1" id="content" placeholder="请如实填写您的详细信息，如街道名称、门牌号、楼层号和房间号." name="content" ></textarea>
+                        <span id="checkContent" ></span>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li class="tc-li1">
+                        <p class="l-p">邮政编码<span></span></p>
+                        <input type="text" id="postOffice" name="postoff" />
+                        <span id="checkPost" ></span>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li class="tc-li1">
+                        <p class="l-p">收货人姓名<span>*</span></p>
+                        <input type="text" id="ress_name" name="ressName" />
+                        <span id="checkName" ></span>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li class="tc-li1">
+                        <p class="l-p"  >联系电话<span>*</span></p>
+                        <input type="text"   id="ress_phone"  name="phone" />
+                        <span id="checkPhone" ></span>
+                        <div style="clear:both;"></div>
+                    </li>
+                </ul>
+
+                <button class="btn-pst2" id="but_js">保存</button>
+            </div> -->

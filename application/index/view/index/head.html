@@ -13,11 +13,19 @@
         <div class="top-con w1200">
             <p class="t-con-l f-l">您好，欢迎来到钱蜂网</p>
             <ul class="t-con-r f-r">
-                <li><a href="{:url('index/personal/personal')}">我 (个人中心)</a></li>
-                <li><a href="{:url('index/personal/cart')}">我的购物车</a></li>
-                <li><a href="{:url('index/personal/order')}">我的订单</a></li>
+
+                {if $Think.session.user_name != null}
+                    <li>
+                        <a href="{:url('index/personal/personal')}" style="color:red;">{$Think.session.user_name}</a> &nbsp; 
+                        <a href="{:url('index/register/eliminateSess')}" style="color:red;" >退出</a>
+                    </li>
+                    <li><a href="{:url('index/personal/cart')}">我的购物车</a></li>
+                    <li><a href="{:url('index/personal/order')}">我的订单</a></li>              
+                {else}
+                    <li><a href="{:url('index/register/login')}">请登录</a></li> 
+                {/if}
                 <li class="erweima">
-                    <a href="#">扫描二维码</a>
+                    <a href="{:url('index/index/index')}">扫描二维码</a>
                     <div class="ewm-tu">
                         <a href="{:url('index/index')}"><img src="__IMAGE__PATH__/erweima-tu.jpg" /></a>
                     </div>

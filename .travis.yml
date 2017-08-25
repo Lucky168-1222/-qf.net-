@@ -12,7 +12,6 @@ cache:
 
 before_install:
   - composer self-update
-
 install:
   - composer install --no-dev --no-interaction --ignore-platform-reqs
   - zip -r --exclude='*.git*' --exclude='*.zip' --exclude='*.travis.yml' ThinkPHP_Core.zip .

@@ -14,10 +14,55 @@ class Register extends Auth
 	protected $user;
 
 
-	//[登录用户检测]
+	//[退出:清除session]
+	public function eliminateSess()
+	{
+		session(null);
+		$this->error('退出成功','index/index');
+	}
+
+	//[修改密码成功]
+	public function passChenggong()
+	{
+		$this->success('修改密码成功,正在跳转至登录页面','index/register/login');
+	}
+	//[修改密码失败]
+	public function passShibai()
+	{
+		$this->error('修改密码失败');
+	}
+	//[修改密码]
+	public function updatePass()
+	{
+		$username = $_GET['username'];
+		$password = md5($_GET['password']);
+		$user = new User();
+		$result = $user::updatePassword($username,$password);
+		echo json_encode($result);
+	}
+
+	//[登录用户/手机检测]
+	public function phoneCheck()
+	{
+		$loginUser = $_GET['username'];
+		$phone = $_GET['phone'];
+		$user = new User();
+		$result = $user::checkPass($loginUser,$phone);
+		echo json_encode($result);
+	}
+
+
+	//[找回密码检测用户名是否存在]
+	public function checkPassUser()
+	{
+		$username = $_GET['username'];
+		$user = new User();
+		$result = $user->checkPassUser($username);
+		echo json_encode($result);
+	}
+	//[登录用户/手机检测]
 	public function checkLogin()
 	{
-
 		$loginUser = $_GET['username'];
 		$phone = $_GET['phone'];
 		$user = new User();
@@ -34,6 +79,7 @@ class Register extends Auth
 		$result = $user::checkLogin($loginUser,$loginPwd);
 		if ($result) {
 			session('user_id',$result['user_id']);
+			session('user_name',$result['user_name']);
 			$result = ['data'=>true];
 		}else{
 			$result = ['data'=>false];

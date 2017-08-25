@@ -8,6 +8,10 @@
 <link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
 <script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
 <script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<style type="text/css">
+    #updatePass {display:none;}
+
+</style>
 </head>
 
 <body>
@@ -15,31 +19,43 @@
     {include file="index/head"}
     <!--内容开始-->
     <div class="password-con">
-    	<div class="psw">
-        	<p class="psw-p1">用户名</p>
-            <input type="text" placeholder="请输入用户名" />
-            <span class="dui"></span>
+    	<div id="pass_head">
+            <div class="psw">
+            	<p class="psw-p1">用户名</p>
+                <input type="text" id="user_id"  placeholder="请输入用户名" />
+                <span id="dui"></span>
+            </div>
+            <div class="psw psw2">
+                <p class="psw-p1">手机号</p>
+                <input type="text" placeholder="请输入手机号码" id="phone" />
+                <input type="hidden" name="yzm" id="yzm">
+                <button id="get">获取短信验证码</button>
+                <span id="check_phone" ></span>
+            </div>
+        	<div class="psw psw3">
+                <p class="psw-p1">验证码</p>
+                <input type="text" id="code" placeholder="请输入手机验证码" />
+                <span id="check_code" ></span>
+            </div>
+            <div><br></div>
+            <button class="psw-btn" id="pass_id">找回密码</button>
         </div>
-    	<div class="psw psw2">
-        	<p class="psw-p1">手机号</p>
-            <input type="text" placeholder="请输入手机" />
-            <button>获取短信验证码</button>
+
+        <div id="updatePass">
+        	<div class="psw">
+            	<p class="psw-p1">输入密码</p>
+                <input type="password" id="pass_word_id" placeholder="请输入密码" />
+                <span id="password_id"></span>
+            </div>
+        	<div class="psw">
+            	<p class="psw-p1">确认密码</p>
+                <input type="password"  id="repass_id" placeholder="请再次确认密码" />
+                <span id="re_pass_id"></span>
+            </div>
+            <button class="psw-btn" id="submit">修改密码</button>
         </div>
-    	<div class="psw">
-        	<p class="psw-p1">验证码</p>
-            <input type="text" placeholder="请输入手机验证码" />
-        </div>
-    	<div class="psw">
-        	<p class="psw-p1">输入密码</p>
-            <input type="text" placeholder="请输入密码" />
-            <span class="cuo">密码由6-16的字母、数字、符号组成</span>
-        </div>
-    	<div class="psw">
-        	<p class="psw-p1">确认密码</p>
-            <input type="text" placeholder="请再次确认密码" />
-            <span class="cuo">密码不一致，请重新输入</span>
-        </div>
-        <button class="psw-btn">找回密码</button>
+
+
     </div>
 
     <!--底部服务-->
@@ -103,7 +119,7 @@
         	<a href="#">商家登录</a><span>|</span>
         	<a href="#">供应商登录</a><span>|</span>
         	<a href="#">热门搜索</a><span>|</span>
-        	<a href="#">宅客微购新品</a><span>|</span>
+        	<a href="#">宅type="text/javascript"新品</a><span>|</span>
         	<a href="#">开放平台</a>
         </p>
         <p>
@@ -113,3 +129,113 @@
     
 </body>
 </html>
+<script type="text/javascript" >
+
+    //[找回用户检测]
+	$('#user_id').blur(function(){
+        if ($('#user_id').val() != '') {
+            $.get("{:url('index/register/checkPassUser')}",{username:$('#user_id').val()},function(data){
+                if (data) {
+                    $('#dui').html('<a style="color:#00DB00;" >已验证</a>');
+                }else{
+                    $('#dui').html('<a style="color:red;" >用户不存在</a>');
+                }
+            },'json');
+        }else{
+            $('#dui').html('<a style="color:red;" >用户名不为空</a>');
+        }  
+    })
+
+    //[找回手机检测]
+     var count = null;   //手机验证标识
+    // // //判断短信验证号码
+    $('#phone').blur(function(){     
+        if ($('#phone').val() == '') {
+            $('#check_phone').html('<a style="color:red;">手机号码不为空</a>');
+        }else{  
+            //查询和用户的手机号是否吻合
+            $.get("{:url('index/register/phoneCheck')}",{phone:$("#phone").val(),username:$('#user_id').val()},function(data){
+                // console.log(data.user_name);
+                    if (data.user_name == $('#user_id').val() && data.phone == $("#phone").val()) {
+                        $('#check_phone').html('<a style="color:#00DB00;">已验证</a>');
+                    }else{
+                        $('#check_phone').html('<a style="color:red;">手机号码不正确</a>');
+                    }
+            },'json');
+            
+        }          
+    })
+     //接受返回的验证码
+     $("#get").click(function(){
+        $("#get").css('background','#00DB00');
+    var phone = $("#phone").val();
+    $.post("{:url('index/register/Message')}",{phone:phone},
+        function(obj){
+            count = obj['send'];         
+        },'json');
+    });
+
+
+    // //手机号验证码的判断
+    $('#code').blur(function(){
+        if ($('#code').val() != count) {
+            $('#check_code').html('<a style="color:red;">手机验证码不正确</a>');
+        }else{
+            $('#check_code').html('<a style="color:#00DB00;">已验证</a>');
+        }
+    })
+
+    //提交修改页面
+    $('#pass_id').click(function(){
+        $('#pass_id').css('background','#00DB00');
+        if ($('#phone').val() != '' &&  $('#user_id').val() != '' && $('#code').val() == count ) {
+            $('#updatePass').css('display','block');
+            $('#pass_head').css('display','none');          
+        }else{
+            $('*').focus();
+        }
+       
+    })
+
+    //修改密码
+        $('#pass_word_id').blur(function(){
+            var check = /(^[A-Za-z0-9]{6,16}$)/;
+            if (!check.test($('#pass_word_id').val())) {
+                $('#password_id').html('<a style="color:red;">由6-16位字符、允许字母、数字组成</a>');
+            }else{
+                $.get("{:url('index/register/updatePass')}",{username:$('#user_id').val(),password:$('#pass_word_id').val()},function(data){  
+                    if (data) {
+                        $('#password_id').html('<a style="color:#00DB00;">已验证</a>');   
+                    }                                                  
+                },'json');
+
+          }
+        })
+  
+        $('#repass_id').blur(function(){
+           
+            var check = /(^[A-Za-z0-9]{6,16}$)/;
+            if (!check.test($('#repass_id').val())) {
+                $('#re_pass_id').html('<a style="color:red;">由6-16位字符、允许字母、数字组成</a>');
+            }else{
+                if ($('#repass_id').val()  != $('#pass_word_id').val() ) {
+                    $('#re_pass_id').html('<a style="color:red">两次密码不一致</a>');
+                }else{
+                    $('#re_pass_id').html('<a style="color:#00DB00;">已验证</a>'); 
+                }
+                
+            }
+        })
+
+        //点击修改
+        $('#submit').click(function(){        
+            if($('#pass_word_id').val() != '' && $('#repass_id').val() != ''){
+                $('#submit').css('background','#00DB00');
+                document.location = "{:url('index/register/passChenggong')}";
+            }else{
+               $('*').focus();
+            }   
+        })
+
+</script>
+

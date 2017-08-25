@@ -3,8 +3,31 @@ namespace app\index\model;
 use think\Model;
 use think\Db;
 
+//[用户表]
 class User extends Model
 {
+
+	//个人资料修改头像
+	static public function updatePortrait($info, $u_id)
+	{
+		$result = Db::execute("update shop_user set user_portrait
+		= '$info'  where user_id = '$u_id'");
+		return $result;
+	}
+
+	//[修改个人资料	]
+	static public function updatePersonData($u_id,$data)
+	{
+		$result = Db::execute("update shop_user set nickname='$data[nickname]',sex='$data[sex]',birthday='$data[birthday]',place='$data[place]',email='$data[email]' where user_id='$u_id' ");
+		return $result;
+	}
+
+	//遍历首页登录数据显示
+	static public function homeHead($sess)
+	{
+		return Db::query("select * from shop_user where user_id = '$sess'");
+	}
+
 	//查询用户是否存在
 	static public function checkUser($username)
 	{
@@ -45,6 +68,47 @@ class User extends Model
 		}else{
 			return false;
 		}
+	}
+
+	//[找回密码用户检测]
+	static public function checkPassUser($username)
+	{
+		$data = Db::execute("select user_name from shop_user where user_name = '$username'");
+		if ($data) {
+			return true;
+		}else{
+			return false;
+		}
 		
 	}
+
+	//找回用户/手机用户检查是否存在
+	static public function checkPass($loginUser,$phone)
+	{
+		$data = Db::query("select * from shop_user where user_name = '$loginUser' and phone = '$phone'");
+		if ($data) {
+			return $data[0];
+		}else{
+			return false;
+		}
+	}
+
+	//[修改密码]
+	static public function updatePassword($username,$password)
+	{
+		$data = Db::execute("update shop_user set user_pwd='$password' where user_name='$username'");
+		if ($data) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	//个人资料遍历信息
+	public static function personalList($user_id)
+	{
+		$result = Db::query("select * from shop_user where user_id='$user_id'");
+		return $result;
+	}
+
 }

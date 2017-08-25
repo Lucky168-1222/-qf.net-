@@ -6,9 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>个人资料</title>
 <link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__PATH__/birthday.css" />
 <link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__PATH__/laydate.css">
+<link rel="stylesheet" type="text/css" href="__CSS__PATH__/laydate2.css">
 <script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
 <script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<script type="text/javascript" src="http://localhost/-qf.net-/public/static/index/js/laydate.js"></script>
+<script type="text/javascript" src="__JS__PATH__/birthday/jquery-1.4.2.min.js"></script>
+<style type="text/css">
+    #tanchuang {display:none;}
+</style>
 </head>
 
 <body style="position:relative;">
@@ -39,73 +47,82 @@
                 <div class="personal-r-tit">
                     <h3>个人资料</h3>
                 </div>
+                <form action="{:url('index/personal/updatePersonData')}" method="post">
+
                 <div class="data-con">
-                	<div class="dt1">
-                    	<p class="f-l">当前头像：</p>
-                        <div class="touxiang f-l">
-                        	<div class="tu f-l">
-                            	<a href="#">
-                                	<img src="__IMAGE__PATH__/data-tu.gif" />
-                                    <input type="file" name="" id="" class="img1" />
-                                </a>
+
+                    {volist name="user" id="vo"}
+                    <form action="{:url('index/upload/up')}" method="post" enctype="multipart/form-data" >
+                    	<div class="dt1">
+                        	<p class="f-l">当前头像：</p>
+                            <div class="touxiang f-l">
+                            	<div class="tu f-l">	
+                                	<img src="{$vo.user_portrait}" id="submitImg" />
+                                <input type="file" class="img1" name="file"  id="choice" value="上传" />      
+                                </div >
+                                <input type="submit" name="dosubmit" value="修改头像" style="width:80px;height:40px;margin-top:44px; margin-left:60px;" />
+                                <div style="clear:both;"></div>
                             </div>
-                            <a href="JavaScript:;" class="sc f-l" shangchuang="">上传头像</a>
                             <div style="clear:both;"></div>
                         </div>
-                        <div style="clear:both;"></div>
-                    </div>
+                    </form>
+
+
                     <div class="dt1">
                     	<p class="dt-p f-l">昵称：</p>
-                        <input type="text" placeholder="RH了" />
+                        <input type="text" placeholder="" name="nickname" value="{$vo.nickname}" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="dt1">
                     	<p class="dt-p f-l">用户名：</p>
-                        <input type="text" value="zhao601884596" />
+                        <input type="text" name="user_name" value="{$vo.user_name}" disabled="true" title="您没有权限修改" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="dt1 dt2">
                     	<p class="dt-p f-l">性别：</p>
-                        <input type="radio" name="hobby" value="nan"></input><span>男</span>
-                        <input type="radio" name="hobby" value="nan"></input><span>女</span>
+                         <input type="radio" name="hobby" value="0" {if condition="($vo.sex == 0)"} checked {/if}></input><span>保密</span>
+                        <input type="radio" name="hobby" value="1" {if condition="($vo.sex == 1)"} checked {/if}></input><span>男</span>
+                        <input type="radio" name="hobby" value="2" {if condition="($vo.sex == 2)"} checked {/if}></input><span>女</span>
                         <div style="clear:both;"></div>
                     </div>
                     <div class="dt1">
-                    	<p class="dt-p f-l">年龄：</p>
-                        <input type="text" value="20" />
-                        <div style="clear:both;"></div>
-                    </div>
-                    <div class="dt1 dt3">
-                    	<p class="dt-p f-l">手机号：</p>
-                        <input type="text" value="12345678910" />
-                        <button>获取短信验证码</button>
+                    	<p class="dt-p f-l">生日：</p>
+
+                        <input type="text" class="laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"" name="birthday" value="{$vo.birthday}" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="dt1">
-                    	<p class="dt-p f-l">验证码：</p>
-                        <input type="text" value="" />
+                        <p class="dt-p f-l">户籍：</p>
+                        <input type="text" name="place" value="{$vo.place}" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="dt1">
-                    	<p class="dt-p f-l">邮箱：</p>
-                        <input type="text" value="601884596@qq.com" />
+                        <p class="dt-p f-l">邮箱：</p>
+                        <input type="text" name="email" value="{$vo.email}" />
                         <div style="clear:both;"></div>
                     </div>
-                    <div class="dt1 dt4">
-                    	<p class="dt-p f-l">密码：</p>
-                        <input type="text" value="" />
-                        <button>修改密码</button>
+                    <div class="dt1">
+                    	<p class="dt-p f-l">用户积分：</p>
+                        <input type="text" name="gral_num" value="{$vo.gral_num}" disabled="true" title="您没有权限修改" />
                         <div style="clear:both;"></div>
                     </div>
-                    <button class="btn-pst">保存</button>
+                    <div class="dt1"> 
+                        <p class="dt-p f-l">用户资金：</p>
+                        <input type="text" name="user_money" value="{$vo.user_money}" disabled="true" title="您没有权限修改" />
+                        <div style="clear:both;"></div>
+                    </div>
+                    {/volist}
+                    <button class="btn-pst" type="submit">保存</button>
                 </div>
+
+                </form>
             </div>
         </div>
         <div style="clear:both;"></div>
     </div>
     
     <!-- 上传头像弹窗 -->
-    <div class="tanchuang">
+    <div id="tanchuang">
     	<div class="t-c-bg"></div>
     	<div class="t-c-con">
         	<div class="tc-tit">
