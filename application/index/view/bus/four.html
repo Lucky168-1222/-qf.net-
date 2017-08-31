@@ -107,11 +107,12 @@
                                                     <span>品牌LOGO：</span>
                                                 </div>
                                                 <div class="value">
-                                                    <input type="file" name="ec_brandLogo" id="brandLogo" style="margin-top:5px;">
+                                                    <input type="file" name="file" id="file" style="margin-top:5px;">
                                                     <input type="hidden" value="" name="text_brandLogo" id="textBrandLogo">
                                                     <font style="color:#F00" id="textBrandLogoHTML"></font>
                                                 </div>
                                             </div>
+
                                             <div class="item">
                                                 <div class="label">
                                                     <em>*</em>
@@ -119,9 +120,9 @@
                                                 </div>
                                                 <div class="value">
                                                     <select name="ec_brandType" id="brandType">
-                                                        <option selected="selected" value="0">请选择..</option>
-                                                        <option value="1">国内品牌</option>
-                                                        <option value="2">国际品牌</option>
+                                                        
+                                                        <option value="0">国内品牌</option>
+                                                        <option value="1">国际品牌</option>
                                                     </select>
                                                     <span id="checkBrandType" ></span>
                                                     <font style="color:#F00" id="brandTypeHTML"></font>
@@ -134,9 +135,9 @@
                                                 </div>
                                                 <div class="value">
                                                     <select name="ec_brand_operateType" id="brand_operateType">
-                                                        <option selected="selected" value="0">请选择..</option>
-                                                        <option value="1">自有品牌</option>
-                                                        <option value="2">代理品牌</option>
+                                                        
+                                                        <option value="自有品牌">自有品牌</option>
+                                                        <option value="代理品牌">代理品牌</option>
                                                     </select>
                                                     <span id="checkBrandOperateType" ></span>
                                                     <font style="color:#F00" id="operateTypeHTML"></font>
@@ -246,24 +247,34 @@
 
     //品牌选择
     $('#brandType').blur(function(){
-        if ($('#brandType').val() == '请选择..') {
-            $('#checkBrandType').html('<a style="color:red;" >请选择</a>');
-        }else{
-            $('#checkBrandType').html('<a style="color:#00DB00;" >已验证</a>');
-        }
+        $('#checkBrandType').html('<a style="color:#00DB00;" >已验证</a>');
     })
 
     //经营类型
     $('#brand_operateType').blur(function(){
-        if ($('#brand_operateType').val() == '请选择..') {
-            $('#checkBrandOperateType').html('<a style="color:red;" >请选择</a>');
-        }else{
-            $('#checkBrandOperateType').html('<a style="color:#00DB00;" >已验证</a>');
-        }
+        $('#checkBrandOperateType').html('<a style="color:#00DB00;" >已验证</a>');
     })
 
     $('#nextStepBtn').click(function(){
-        $.post("{:url('index/')}")
+        if ($('#brandName').val() == '' &&  $('#bank_name_letter').val() == '' && $('#brandFirstChar').val() == '') {
+            $('*').focus();
+        }else{
+
+         $.post("{:url('index/bus/addBrand')}",
+            {
+                brandName:$('#brandName').val(),
+                bankNameLetter:$('#bank_name_letter').val(),
+                brandFirstChar:$('#brandFirstChar').val(),
+                brandType:$('#brandType').val(),
+                brand_operateType:$('#brand_operateType').val(),
+                ec_brandEndTime:$('#ec_brandEndTime').val(),
+            },function(data){
+                if (data == 1) {
+                    document.location = "{:url('index/bus/daiShenHe')}";
+                }
+            },'json');
+        }
+       
     })
 
 

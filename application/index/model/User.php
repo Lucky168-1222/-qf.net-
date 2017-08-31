@@ -111,4 +111,31 @@ class User extends Model
 		return $result;
 	}
 
+	//用户支付
+	public function userPay($u_id)
+	{
+		$result = Db::table('shop_user')->where('user_id',$u_id)->field('user_money')->select();
+		return $result[0];
+	}
+
+	//事务提交金额
+	public function affairSub($u_id,$money)
+	{
+		Db::startTrans();
+		try {
+			$userMoney = $this->userPay($u_id);
+			$userMoney = $userMoney['user_money']-$money;
+			$vipMoney = Db::table('shop_user')->where('user_id',106)->field('user_money')->select();
+			$vipMoney = $vipMoney[0]['user_money'] + $money;
+			Db::table('shop_user')->where('user_id',$u_id)->update(['user_money'=> $userMoney ]);
+			Db::table('shop_user')->where('user_id',106)->update(['user_money'=>$vipMoney]);
+			// 提交事务
+			Db::commit();
+		} catch (Exception $e) {
+			// 回滚事务
+			Db::rollback();
+		}
+
+	}
+
 }

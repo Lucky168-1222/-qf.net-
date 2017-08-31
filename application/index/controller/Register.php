@@ -151,6 +151,7 @@ class Register extends Auth
 	//注册页面
 	public function register()
 	{
+		$this->head();
 		return $this->fetch();
 	}
 	
@@ -184,12 +185,14 @@ class Register extends Auth
 	//登录
 	public function login()
 	{
+		$this->head();
 		return $this->fetch();
 	}
 
 	//找回密码
 	public function pass()
 	{
+		$this->head();
 		return $this->fetch();
 	}
 }

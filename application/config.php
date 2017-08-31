@@ -143,18 +143,32 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str'       => [
-        '__JS__PATH__'     =>  'http://qf.net/static/index/js',      //前台js路径
-        '__CSS__PATH__'    =>  'http://qf.net/static/index/css',     //前台css路径
-        '__FONT__PATH__'   =>  'http://qf.net/static/index/font',    //前台字体路径
-        '__IMAGE__PATH__'  =>  'http://qf.net/static/index/images',  //前台图像路径
-        '__SKIN__PATH__'   =>  'http://qf.net/static/index/skin',    //前台皮肤路径
-        '__UPLOAD__PATH__' =>  'http://qf.net/public/',   //前台上传头像路径
-        '__CSS__BUS__'     =>  'http://qf.net/static/bus/css',  //商家入驻CSS路径
-        '__IMAGE__BUS__'     =>  'http://qf.net/static/bus/images',  //商家入驻CSS路径
-        '__JS__BUS__'     =>  'http://qf.net/static/bus/js',  //商家入驻CSS路径
-        '__PICTURE__BUS__'     =>  'http://qf.net/static/bus/picture',  //商家入驻CSS路径
-        '__MSG__PATH__'     =>  'http://qf.net/static/msg',      //报错页面信息
+
+        '__INDEX__'         =>  'http://www.xiangyingchun.cn/',
         
+        '__JS__INDEX__'     =>  'http://www.xiangyingchun.cn/public/static/index/js',      //前台js路径
+        '__CSS__INDEX__'    =>  'http://www.xiangyingchun.cn/public/static/index/css',     //前台css路径
+        '__FONT__INDEX__'   =>  'http://www.xiangyingchun.cn/public/static/index/font',    //前台字体路径
+        '__IMAGE__INDEX__'  =>  'http://www.xiangyingchun.cn/public/static/index/images',  //前台图像路径
+        '__SKIN__INDEX__'   =>  'http://www.xiangyingchun.cn/public/static/index/skin',    //前台皮肤路径
+        '__UPLOAD__INDEX__' =>  'http://www.xiangyingchun.cn/public/public/',   //前台上传头像路径
+        '__CSS__BUS__'     =>  'http://www.xiangyingchun.cn/public/static/bus/css',  //商家入驻CSS路径
+        '__IMAGE__BUS__'     =>  'http://www.xiangyingchun.cn/public/static/bus/images',  //商家入驻CSS路径
+        '__JS__BUS__'     =>  'http://www.xiangyingchun.cn/public/static/bus/js',  //商家入驻CSS路径
+        '__PICTURE__BUS__'     =>  'http://www.xiangyingchun.cn/public/static/bus/picture',  //商家入驻CSS路径
+        '__MSG__PATH__'     =>  'http://www.xiangyingchun.cn/public/static/msg',      //报错页面信息
+        
+        '__JS__PATH__'     =>  'http://www.xiangyingchun.cn/public/static/admin/js',      //后台js路径
+        '__CSS__PATH__'    =>  'http://www.xiangyingchun.cn/public/static/admin/css',     //后台css路径
+        '__FONT__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/font',    //后台字体路径
+        '__IMAGE__PATH__'  =>  'http://www.xiangyingchun.cn/public/static/admin/images',  //后台图像路径
+        '__SKIN__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/skin',    //后台皮肤路径
+        '__WIDGET__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/Widget',    //后台皮肤路径
+        '__UPLOAD__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/upload',    //后台皮肤路径
+        '__PRODUCTS__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/products',    //后台皮肤路径
+        '__ASSETS__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/assets',    //后台皮肤路径
+        '__LOGIN__PATH__'   =>  'http://www.xiangyingchun.cn/public/static/admin/login',    //后台皮肤路径
+
         ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

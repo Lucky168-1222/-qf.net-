@@ -3,15 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>钱峰网-我的订单</title>
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
-<script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
-<script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/shopping-mall-index.css" />
+<script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
+<script type="text/javascript" src="__JS__INDEX__/zhonglin.js"></script>
 </head>
 
 <body>
- {include file="index/head"}
-    
+ {include file="index/head"}  
     <!--内容开始-->
     <div class="personal w1200">
     	<div class="personal-left f-l">
@@ -27,7 +26,7 @@
                 <li class="per-li6"><a href="{:url('index/personal/address')}">管理收货地址<span>></span></a></li>
                 <li class="per-li7"><a href="{:url('index/personal/collection')}">店铺收藏<span>></span></a></li>
                 <li class="per-li8"><a href="{:url('index/personal/purchaseNum')}">购买记录<span>></span></a></li>
-                <li class="per-li9"><a href="{:url('index/personal/seekNum')}">浏览记录<span>></span></a></li>
+                <li class="per-li9"><a href="{:url('index/personal/seekNum')}">收藏商品<span>></span></a></li>
                 <li class="per-li10"><a href="{:url('index/personal/integral')}">会员积分<span>></span></a></li>
             </ul>
         </div>
@@ -35,16 +34,16 @@
         	<div class="order-hd">
             	<dl class="f-l">
                 	<dt>
-                    	<a href="#"><img src="__IMAGE__PATH__/data-tu2.gif" /></a>
+                    	<a href="#"><img src="__IMAGE__INDEX__/data-tu2.gif" /></a>
                     </dt>
                     <dd>
-                    	<h3><a href="#">RH了</a></h3>
+                    	<h3><a href="#">ashj</a></h3>
                         <p>zhao601884596</p>
                     </dd>
                     <div style="clear:both;"></div>
                 </dl>
-                <div class="ord-dai f-l">
-                	<p>待付款<span>1</span></p>
+                <div class="ord-dai f-l title">
+                	<p class="active">待付款<span>1</span></p>
                 	<p>待发货<span>1</span></p>
                 	<p>待收货<span>1</span></p>
                 	<p>待评价<span>1</span></p>
@@ -56,164 +55,150 @@
                 	<h3>我的订单</h3>
                 </div>
                 <div class="md-hd">
-                	<P class="md-p1"><input type="checkbox" name="hobby" value=""></input><span>全选</span></P>
+                	<P class="md-p1"><input type="checkbox" name="hobby" value=""><span>全选</span></P>
                     <p class="md-p2">商品信息</p>
-                    <p class="md-p3">规格</p>
+                    <p class="md-p3">数量</p>
                     <p class="md-p4">单价（元）</p>
                     <p class="md-p5">金额（元）</p>
                     <p class="md-p6">操作</p>
                 </div>
+                      
+                <div class="md-info active">
+                	<div class="dai">
+                    	<input type="checkbox" name="hobby" value=""><span  >待付款</span>
+                    </div>
+                    {volist name='seekOrder' id='val'}
+                    {if $val['order_status'] == 1 && $val['is_order'] == 0} 
+                    <div class="dai-con">
+                    	<dl class="dl1">
+                        	<dt>
+                                <input type="checkbox" name="hobby" value="{$val.order_id}" class="f-l">
+                                <a href="#" class="f-l"><img src="{$val.shop_logo}" width="100" /></a>
+                                <div style="clear:both;"></div>
+                            </dt>
+                            <dd>
+                          
+                                <p>{$val.shop_name}</p>
+                                <span>X 1</span>
+                            </dd>
+                            <div style="clear:both;"></div>
+                        </dl>
+                        <div class="dai-right f-l">
+                        	<P class="d-r-p1">1</P>
+                            <p class="d-r-p2">¥ {$val.shop_price} </p>
+                            <p class="d-r-p3">¥ {$val.shop_price}</p>
+                            <p class="d-r-p4"><a href="{:url('index/personal/removeOrder')}?order_id={$val.order_id}">移除订单</a><br /><a href="{:url('index/personal/cart')}">付款</a></p>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    {else}
+                    {/if}
+                    {/volist}
+                </div>
+               
+                
                 <div class="md-info">
                 	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""></input><span>待付款</span>
+                    	<input type="checkbox" name="hobby" value=""><span>待签收</span>
                     </div>
+                    {volist name='seekOrder' id='vvv'}
+                    {if $vvv['order_status'] == 2 && $val['is_order'] == 0}
                     <div class="dai-con">
                     	<dl class="dl1">
                         	<dt>
-                                <input type="checkbox" name="hobby" value="" class="f-l"></input>
-                                <a href="#" class="f-l"><img src="__IMAGE__PATH__/dai.gif" /></a>
+                                <input type="checkbox" name="hobby" value="" class="f-l">
+                                <a href="#" class="f-l"><img src="{$vvv.shop_logo}" width="100" /></a>
                                 <div style="clear:both;"></div>
                             </dt>
                             <dd>
-                            	<p>登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点江西特产小吃 休闲办公零食</p>
+                            	<p>{$vvv.shop_name}</p>
                                 <span>X 1</span>
                             </dd>
                             <div style="clear:both;"></div>
                         </dl>
                         <div class="dai-right f-l">
-                        	<P class="d-r-p1">颜色：蓝色<br />尺码：XL</P>
-                            <p class="d-r-p2">¥ 66.00</p>
-                            <p class="d-r-p3">¥ 66.00</p>
-                            <p class="d-r-p4"><a href="#">移入收藏夹</a><br /><a href="#">删除</a><br /><a href="{:url('index/personal/cart')}">付款</a></p>
+                        	<P class="d-r-p1" style=" position:relative;top:-20px;">1br /></P>
+                            <p class="d-r-p2" style="top:-43px;">¥ {$val.shop_price}</p>
+                            <p class="d-r-p3" style="top:-43px;">¥ {$val.shop_price}</p>
+                            <p class="d-r-p4"><a href="{:url('index/personal/removeOrder')}?order_id={$val.order_id}">移除订单</a><br /><a href="#">确认签收</a><br /><a href="JavaScript:;" ckwl="">查看物流</a></p>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
-                    <div class="dai-con">
-                    	<dl class="dl1">
-                        	<dt>
-                                <input type="checkbox" name="hobby" value="" class="f-l"></input>
-                                <a href="#" class="f-l"><img src="__IMAGE__PATH__/dai.gif" /></a>
-                                <div style="clear:both;"></div>
-                            </dt>
-                            <dd>
-                            	<p>登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点江西特产小吃 休闲办公零食</p>
-                                <span>X 1</span>
-                            </dd>
-                            <div style="clear:both;"></div>
-                        </dl>
-                        <div class="dai-right f-l">
-                        	<P class="d-r-p1">颜色：蓝色<br />尺码：XL</P>
-                            <p class="d-r-p2">¥ 66.00</p>
-                            <p class="d-r-p3">¥ 66.00</p>
-                            <p class="d-r-p4"><a href="#">移入收藏夹</a><br /><a href="#">删除</a><br /><a href="{:url('index/personal/cart')}">付款</a></p>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
+                    {else}
+                {/if}
+                {/volist}
                 </div>
+                
+                <div class="md-info">
+                    <div class="dai">
+                        <input type="checkbox" name="hobby" value=""><span>已签收</span>
+                    </div>
+                    {volist name='seekOrder' id='vv'}
+                    {if $vv['order_status'] == 3 && $val['is_order'] == 0}
+                    <div class="dai-con">
+                        <dl class="dl1">
+                            <dt>
+                                <input type="checkbox" name="hobby" value="" class="f-l">
+                                <a href="#" class="f-l"><img src="{$vv.shop_logo}" width="100" /></a>
+                                <div style="clear:both;"></div>
+                            </dt>
+                            <dd>
+                                <p>{$vv.shop_name}</p>
+                                <span>X 1</span>
+                            </dd>
+                            <div style="clear:both;"></div>
+                        </dl>
+                        <div class="dai-right f-l">
+                            <P class="d-r-p1">1<br /></P>
+                            <p class="d-r-p2">¥ {$val.shop_price}</p>
+                            <p class="d-r-p3">¥ {$val.shop_price}</p>
+                            <p class="d-r-p4" style="margin-top:20px;"><a href="#">移出订单</a><br /><a href="#">评价</a><br /><a href="#">删除</a></p>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    {else}
+                    {/if}
+                    {/volist}
+                </div>
+                
                 <div class="md-info">
                 	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""></input><span>待发货</span>
+                    	<input type="checkbox" name="hobby" value=""><span>完成订单</span>
                     </div>
+                    {volist name='seekOrder' id='vol'}
                     <div class="dai-con">
                     	<dl class="dl1">
                         	<dt>
-                                <input type="checkbox" name="hobby" value="" class="f-l"></input>
-                                <a href="#" class="f-l"><img src="__IMAGE__PATH__/dai.gif" /></a>
+                                <input type="checkbox" name="hobby" value="" class="f-l">
+                                <a href="#" class="f-l"><img src="{$vol.shop_logo}" width="100" /></a>
                                 <div style="clear:both;"></div>
                             </dt>
                             <dd>
-                            	<p>登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点江西特产小吃 休闲办公零食</p>
+                            	<p>{$vol.shop_name}</p>
                                 <span>X 1</span>
                             </dd>
                             <div style="clear:both;"></div>
                         </dl>
                         <div class="dai-right f-l">
-                        	<P class="d-r-p1">颜色：蓝色<br />尺码：XL</P>
-                            <p class="d-r-p2">¥ 66.00</p>
-                            <p class="d-r-p3">¥ 66.00</p>
-                            <p class="d-r-p4" style="margin-top:20px;"><a href="#">移入收藏夹</a><br /><a href="#">删除</a></p>
+                        	<P class="d-r-p1">1<br /></P>
+                            <p class="d-r-p2">¥ {$vol.shop_price}</p>
+                            <p class="d-r-p3">¥ {$vol.shop_price}</p>
+                            <p class="d-r-p4" style="margin-top:20px;"><a>再来一单</a></p>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
+                    {/volist}
                 </div>
-                <div class="md-info">
-                	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""></input><span>待收货</span>
-                    </div>
-                    <div class="dai-con">
-                    	<dl class="dl1">
-                        	<dt>
-                                <input type="checkbox" name="hobby" value="" class="f-l"></input>
-                                <a href="#" class="f-l"><img src="__IMAGE__PATH__/dai.gif" /></a>
-                                <div style="clear:both;"></div>
-                            </dt>
-                            <dd>
-                            	<p>登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点江西特产小吃 休闲办公零食</p>
-                                <span>X 1</span>
-                            </dd>
-                            <div style="clear:both;"></div>
-                        </dl>
-                        <div class="dai-right f-l">
-                        	<P class="d-r-p1" style=" position:relative;top:-20px;">颜色：蓝色<br />尺码：XL</P>
-                            <p class="d-r-p2" style="top:-43px;">¥ 66.00</p>
-                            <p class="d-r-p3" style="top:-43px;">¥ 66.00</p>
-                            <p class="d-r-p4"><a href="#">移入收藏夹</a><br /><a href="#">删除</a><br /><a href="#">确认收货</a><br /><a href="JavaScript:;" ckwl="">查看物流</a></p>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
-                </div>
-                <div class="md-info">
-                	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""></input><span>待评价</span>
-                    </div>
-                    <div class="dai-con">
-                    	<dl class="dl1">
-                        	<dt>
-                                <input type="checkbox" name="hobby" value="" class="f-l"></input>
-                                <a href="#" class="f-l"><img src="__IMAGE__PATH__/dai.gif" /></a>
-                                <div style="clear:both;"></div>
-                            </dt>
-                            <dd>
-                            	<p>登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点江西特产小吃 休闲办公零食</p>
-                                <span>X 1</span>
-                            </dd>
-                            <div style="clear:both;"></div>
-                        </dl>
-                        <div class="dai-right f-l">
-                        	<P class="d-r-p1">颜色：蓝色<br />尺码：XL</P>
-                            <p class="d-r-p2">¥ 66.00</p>
-                            <p class="d-r-p3">¥ 66.00</p>
-                            <p class="d-r-p4" style="margin-top:20px;"><a href="#">移入收藏夹</a><br /><a href="#">删除</a></p>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
-                </div>
+                
+
                 <!--分页-->
                 <div class="paging">
             	<div class="pag-left f-l">
-                	<a href="#" class="about left-r f-l"><</a>
                     <ul class="left-m f-l">
-                    	<li><a href="#">1</a></li>
-                        <li class="current"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">100</a></li>
-                        <div style="clear:both;"></div>
-                    </ul>
-                	<a href="#" class="about left-l f-l">></a>
+                       {$page}
+                    </ul>         	
                     <div style="clear:both;"></div>
                 </div>
-            	<div class="pag-right f-l">
-                	<div class="jump-page f-l">
-                        到第<input type="text" />页
-                    </div>
-                    <button class="f-l">确定</button>
-                    <div style="clear:both;"></div>
-                </div>
-                <div style="clear:both;"></div>
             </div>
             </div>
             
@@ -297,7 +282,7 @@
         	<div class="view-tit">
             	<h3>物流信息</h3>
                 <a href="JavaScript:;" guanbi="">
-                	<img src="__IMAGE__PATH__/close-select-city.gif" />
+                	<img src="__IMAGE__INDEX__/close-select-city.gif" />
                 </a>
                 <div style="clear:both;"></div>
             </div>
@@ -325,3 +310,54 @@
     
 </body>
 </html>
+<script type="text/javascript">
+//检查是否引入jquery.js文件
+    $(function(){
+        //循环遍历出按钮的属性
+        $('.title p').each(function(i,obj){
+            $(obj).attr('key',i);   //给i起了一个别名
+            //给按钮添加点击事件
+            $(obj).click(function(){    
+                //点击的时候修改被点击的按钮添加变色属性值
+                $(this).addClass('active'); 
+                //获取其他同级的元素并且删除含有被点击的属性
+                $(this).siblings().removeClass('active');
+                //获取内容的属性,用attr获取内容的下标,对被点击的下标添加actice的属性
+                $('.content div').eq($(this).attr('key')).addClass('active');
+                //删除没有被点击的的active的属性
+                $('.content div').eq($(this).attr('key')).siblings().removeClass('active');
+            })
+        })
+    })
+function ems(){
+    var link = window.location.search;
+    var ems_id = link.substring(link.lastIndexOf('=') + 1, link.length);
+    $.get("{:url('index/user/ems')}", { ems_id: ems_id }, function(data) {
+        var one = eval('(' + data + ')'); 
+        // $('#ems').html(one);
+        var ems = '';
+        for (var i = 0; i < one.result.list.length; i++) {
+
+            ems += (one.result.list[i].time + " <br /> " + one.result.list[i].status) + " <br /> ";
+
+        }
+        $("#ems").append(ems);
+        $('#ems1').html('订单号：' + one.result.number);
+        $('#ems2').html('快递类型：' + one.result.type);
+        switch (one.result.deliverystatus) {
+            case '1':
+                $('#ems3').html('运输状态：' + '在途中');
+                break;
+            case '2':
+                $('#ems3').html('运输状态：' + '派件中');
+                break;
+            case '3':
+                $('#ems3').html('运输状态：' + '已签收');
+                break;
+            case '4':
+                $('#ems3').html('运输状态：' + '派送失败(拒签等)');
+                break;
+        }
+    }, 'json');
+}
+</script>

@@ -3,10 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>钱峰网-首页</title>
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/index.css" />
-<script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
-<script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/index.css" />
+<script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
+<script type="text/javascript" src="__JS__INDEX__/zhonglin.js"></script>
 </head>
 
 <body>
@@ -15,12 +15,12 @@
     <div class="banner-box">
     	<div class="banner w1200">
         	<ul>
-            	<li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/01.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/02.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/03.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/04.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/05.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__PATH__/index/06.jpg" /></a></li>
+            	<li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/01.jpg" /></a></li>
+                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/02.jpg" /></a></li>
+                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/03.jpg" /></a></li>
+                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/04.jpg" /></a></li>
+                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/05.jpg" /></a></li>
+                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/06.jpg" /></a></li>
                 <div style="clear:both;"></div>
             </ul>
             <a href="JavaScript:;" class="bnr bnr-left"><</a>
@@ -35,59 +35,25 @@
     
     <!--热门推荐-->
     <div class="hot-recommend w1200">
-    	<h3>热门推荐</h3>
+    	<h3>热门商家推荐</h3>
+       
         <ul class="">
+ 
+         {foreach $eachShops as $key => $value}
         	<li class="ys1">
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu1.jpg" /></a>
+            	<a href="{:url('index/shopslogo/shopslogo')}?shops_id={$value['shops_id']}" class="ys2-a1" >
+                    <img src="{$value['shops_logo']}?shops_id={$value['shops_id']}" width="280" />
+                </a>
                 <div class="ys1-opt"></div>
                 <div class="ys1-ft">
-                	<p>最唯美<br /><span>时尚酒店</span></p>
-                    <a href="{:url('index/shopslogo/shopslogo')}">点击有实惠</a>
+                	<p>最优质店铺<br /><span>{$value['shops_names']}</span></p>
+                    <a href="{:url('index/shopslogo/shopslogo')}?shops_id={$value['shops_id']}">点击进店铺</a>
                 </div>
             </li>
-            <li class="ys2">
-            	<p>汽车保养</p>
-                <a href="{:url('index/shopslogo/shopslogo')}" class="ys2-a1" style="margin-bottom:25px;">上门汽车保养1一元钱</a>
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu2.jpg" /></a>
-            </li>
-            <li class="ys2">
-            	<p>汽车保养</p>
-                <a href="{:url('index/shopslogo/shopslogo')}" class="ys2-a1">上门汽车保养1一元钱</a>
-                <a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu3.jpg" /></a>
-            </li>
-            <li class="ys2" style=" width:298px;">
-            	<p>汽车保养</p>
-                <a href="{:url('index/shopslogo/shopslogo')}" class="ys2-a1">上门汽车保养1一元钱</a>
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu4.jpg" /></a>
-            </li>
-            <li class="ys1">
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu5.jpg" /></a>
-                <div class="ys1-opt"></div>
-                <div class="ys1-ft">
-                	<p>最实惠KTV<br /><span>最佳组合</span></p>
-                    <a href="{:url('index/shopslogo/shopslogo')}">点击有实惠</a>
-                </div>
-            </li>
-            <li class="ys1">
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu6.jpg" /></a>
-                <div class="ys1-opt"></div>
-                <div class="ys1-ft">
-                	<p>最贴心家政<br /><span>包您满意</span></p>
-                    <a href="{:url('index/shopslogo/shopslogo')}">点击有实惠</a>
-                </div>
-            </li>
-            <li class="ys2">
-            	<p>汽车保养</p>
-                <a href="{:url('index/shopslogo/shopslogo')}" class="ys2-a1" style="margin-bottom:12px;">上门汽车保养1一元钱</a>
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu7.jpg" /></a>
-            </li>
-            <li class="ys2" style="width:298px;">
-            	<p>汽车保养</p>
-                <a href="{:url('index/shopslogo/shopslogo')}" class="ys2-a1" style="margin-bottom:15px;">上门汽车保养1一元钱</a>
-            	<a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/hot-tu8.jpg" /></a>
-            </li>
-            <div style="clear:both;"></div>
-        </ul>
+            
+        {/foreach}
+        <div style="clear:both;"></div>
+        </ul>        
     </div>
     
     <!--广告栏-->
@@ -97,14 +63,14 @@
     
     <!--食品分类-->
     <ul class="advertisement2">
-    	<li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
-        <li style="border-right:none;"><a href="#"><img src="__IMAGE__PATH__/lanyuelian.gif" /></a></li>
+    	<li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li style="border-right:none;"><a href="#"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
         <div style="clear:both;"></div>
     </ul>
     
@@ -124,7 +90,7 @@
         <div class="din-con">
         	<div class="lin-l f-l">
             	<div class="lin-l-t">
-                	<a href="#"><img src="__IMAGE__PATH__/din-l-tu.gif" /></a>
+                	<a href="#"><img src="__IMAGE__INDEX__/din-l-tu.gif" /></a>
                 </div>
             	<div class="lin-l-b">
                 	<a href="{:url('index/details/details')}">甜食</a>
@@ -144,7 +110,7 @@
             </div>
         	<div class="lin-m f-l">
             	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-m-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
                         <p class="p1">5斤装仅需68v顺丰包邮</p>
@@ -153,7 +119,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-m-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
                         <p class="p1">5斤装仅需68v顺丰包邮</p>
@@ -162,7 +128,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl style="border-bottom:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-m-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
                         <p class="p1">5斤装仅需68v顺丰包邮</p>
@@ -173,7 +139,7 @@
             </div>
         	<div class="lin-r f-l">
             	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -182,7 +148,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -191,7 +157,7 @@
                     <div style="clear:both;"></div>
                 </dl>
             	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -200,7 +166,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -209,7 +175,7 @@
                     <div style="clear:both;"></div>
                 </dl>
             	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -218,7 +184,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -227,7 +193,7 @@
                     <div style="clear:both;"></div>
                 </dl>
             	<dl style="border-bottom:none">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -236,7 +202,7 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <dl style="border-right:none;border-bottom:none">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/din-r-tu1.gif" /></a></dt>
+                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
                     <dd class="f-l">
                     	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
                         <p class="p1">包邮爆款低至</p>
@@ -313,7 +279,7 @@
         	<a href="#">供应商登录</a><span>|</span>
         	<a href="#">热门搜索</a><span>|</span>
         	<a href="#">宅客微购新品</a><span>|</span>
-        	<a href="#">开放平台</a>
+        	<a href="{:url('admin/auth/login')}">平台登录</a>
         </p>
         <p>
         	沪ICP备13044278号<span>|</span>合字B1.B2-20130004<span>|</span>营业执照<span>|</span>互联网药品信息服务资格证<span>|</span>互联网药品交易服务资格证

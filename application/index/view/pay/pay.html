@@ -3,10 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>确认订单</title>
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
-<script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
-<script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/shopping-mall-index.css" />
+<script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
+<script type="text/javascript" src="__JS__INDEX__/zhonglin.js"></script>
 </head>
 
 <body style="position:relative;">
@@ -19,36 +19,32 @@
                 <h3>选择收货地址</h3>
             </div>
             <ul class="pay-dz">
+            {volist name='address' id='value'}
                 <li class="current">
-                    <h3><span class="sp1">重庆</span><span class="sp2">南岸区</span>（<span class="sp3">赵珍珍</span> 收）</h3>
-                    <p><span class="sp1">南岸南坪南岸区南坪福红路19号乙单元7-2</span><span class="sp2">18983945092</span></p>
-                    <a href="JavaScript:;" xiugai="">修改</a>
+                    <h3><span class="sp1">{$value.province}</span><span class="sp2">{$value.city}</span>（<span class="sp3">{$value.ress_name}</span> 收）</h3>
+                    <p><span class="sp1">{$value.detailed_ress}</span><span class="sp2">{$value.ress_phone}</span></p>
+                    <a href="{:url('index/personal/address')}" xiugai="">修改</a>
                 </li>
-                <li>
-                    <h3><span class="sp1">长寿</span><span class="sp2">长寿湖</span>（<span class="sp3">赵珍珍2</span> 收）</h3>
-                    <p><span class="sp1">长寿长寿南坪福红路19号乙单元8-8</span><span class="sp2">18888888888</span></p>
-                    <a href="JavaScript:;" xiugai="">修改</a>
-                </li>
-                <li>
-                    <h3><span class="sp1">李家沱</span><span class="sp2">土桥</span>（<span class="sp3">赵珍2</span> 收）</h3>
-                    <p><span class="sp1">李家沱土桥南坪福红路19号华盛顿乙单元8-8</span><span class="sp2">19999999999</span></p>
-                    <a href="JavaScript:;" xiugai="">修改</a>
-                </li>
+            {/volist}
+                <a href="{:url('index/personal/address')}">添加收货地址</a>
                 <div style="clear:both;"></div>
             </ul>
             <P class="pay-xgdz">修改地址和使用新地址样式一样。</P>
-            <button class="pay-xdz-btn">使用新地址</button>
         </div>
+
+
         <div class="pay-info">
             <div class="info-tit" style="border-bottom:0;">
                 <h3>订单信息</h3>
             </div>
         </div>
+       
         <div class="cart-con-info">
+        {volist name='shoplist' id='vo'}
             <div class="cart-con-tit" style="margin:20px 0 5px;">
                 <p class="p1" style="width:400px;">
-                    <input type="checkbox" value="" name="hobby"></input>
-                    <span>商家：向东服饰专卖店</span>
+                    <input type="checkbox" value="" name="hobby">
+                    <span>天狗商城自营店</span>
                 </p>
                 <p class="p3" style="width:145px;">规格</p>
                 <p class="p4" style="width:130px;">数量</p>
@@ -56,48 +52,66 @@
                 <p class="p5">单价（元）</p>
                 <p class="p6" style="width:173px;">金额（元）</p>
                 <p class="p7">配送方式</p>
-            </div>
+            </div> 
+
             <div class="info-mid">
+                <input type="hidden"  id="shop_id" value="{$vo.shop_id}" style="display:none;"  />
                 <div class="mid-tu f-l">
-                    <a href="#"><img src="images/dai1.gif" /></a>
+                    <a href="#"><img src="{$vo.shop_logo}" width="120" /></a>
                 </div>
                 <div class="mid-font f-l" style="margin-right:40px;">
-                    <a href="#">登高阁紫菜肉松鸡蛋卷 海苔蛋卷 糕点<br />江西特产小吃 休闲办公零食</a>
+                    <a href="#" style="width:205px" id="shopName" >{$vo.shop_name}<br>{$vo.shop_content}</a>
                 </div>
                 <div class="mid-guige1 f-l" style="margin-right:40px;">
-                    <p>颜色：蓝色</p>
-                    <p>尺码：XL</p>
+                    <p></p>
+                    <p>24*24</p>
                 </div>
                 <div class="mid-sl f-l" style="margin:10px 54px 0px 0px;">
-                    <a href="JavaScript:;" class="sl-left">-</a>
-                    <input type="text" value="1" />
-                    <a href="JavaScript:;" class="sl-right">+</a>
+                    <a></a>
+                    <input type="text" value="{$vo.number}" id="number" disabled="true" style="width:50px;" />
+                    <a></a>
                 </div>
-                <p class="mid-yunfei f-l">¥ 0.00</p>
-                <p class="mid-dj f-l">¥ 66.00</p>
-                <p class="mid-je f-l" style="margin:10px 120px 0px 0px;">¥ 66.00</p>
+                <p class="mid-yunfei f-l">(免运费)</p>
+                <p class="mid-dj f-l">¥ {$vo.shop_price}</p>
+               <p class="mid-je f-l" style="margin:10px 110px 0px 0px;"><span>¥</span>{$vo.shop_price*$vo.number}</p>
                 <div class="mid-chaozuo f-l">
-                    <select>
-                        <option>送货上门</option>
-                        <option>快递包邮</option>
+                    <select id="express" >
+                        <option value="0" >邮政快递</option>
+                        <option value="1" >圆通速递</option>
+                        <option value="2" >顺丰快递</option>
+                        <option value="3" >申通快递</option>
                     </select>
                 </div>
                 <div style="clear:both;"></div>
             </div>
+         {/volist}
             <div class="info-heji">
-                <p class="f-r">店铺合计(含运费)：<span>¥46.60</span></p>
-                <h3 class="f-r">订单号：2015122332124565</h3>
-            </div>
+                <p class="f-r">店铺合计(含运费)：¥<span>{$setlement}</span></p>
+                <h3 class="f-r">订单号：<span>{$keyID}</span></h3>
+            </div>  
+
             <div class="info-tijiao">
-                <p class="p1">实付款：<span>¥46.60</span></p>
-                <button class="btn" onclick="tijiao()" >提交订单</button>
+                <p class="p1">实付款：<span id="setlement" >{$setlement}</span></p>
+                <button class="btn" onclick="submitOrder();" >提交订单</button>
                 <script type="text/javascript">
-                function tijiao(){
-                    document.location = "{:url('index/pay/payment')}";
+                //提交
+                function submitOrder(){
+                    // alert(11);
+                    var shop_id = $('#shop_id').val();
+                    var name = $('#shopName').html(); 
+                    var express = $('#express').val();
+                    var number = $('#number').val();
+                    var setlement = $('#setlement').html();
+                    $.post("{:url('index/personal/orderInsert')}",{shop_id:shop_id,shop_name:name,express:express,number:number,order_money:setlement},function(data){
+                        if (data == 1) {
+                           document.location = "{:url('index/pay/payment')}";
+                        }
+                    },'json')
                 }
                 </script>
             </div>
         </div>
+  
     </div>
     
     <!--底部服务-->

@@ -122,7 +122,7 @@ a:focus{outline:none; -moz-outline:none;}		/*解决  去除 a 链接点击后有
 
 /*热门推荐*/
 .hot-recommend h3{ font-size:18px; color:#000; font-weight:normal; margin-top:20px;}
-.hot-recommend ul{ width:1199px; margin:13px auto 0;border-left:1px solid #ECECEC; border-top:1px solid #ECECEC;}
+.hot-recommend ul{ width:1200px; margin:13px auto 0;border-left:1px solid #ECECEC; border-top:1px solid #ECECEC;}
 .hot-recommend li{ float:left; width:299px; height:236px; overflow:hidden; border-right:1px solid #ECECEC;border-bottom:1px solid #ECECEC;}
 .hot-recommend li img{margin:0 auto;}
 .hot-recommend .ys1{ position:relative;}

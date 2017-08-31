@@ -1,68 +1,58 @@
-<!DOCTYPE html PUBLIC>
+    <!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>商品详情</title>
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/style.css" />
-<link rel="stylesheet" type="text/css" href="__CSS__PATH__/shopping-mall-index.css" />
-<script type="text/javascript" src="__JS__PATH__/jquery.js"></script>
-<script type="text/javascript" src="__JS__PATH__/zhonglin.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__INDEX__/shopping-mall-index.css" />
+<script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
+<script type="text/javascript" src="__JS__INDEX__/zhonglin.js"></script>
 </head>
 
 <body style="position:relative;">
  {include file="index/head"}
     <!--内容开始-->
     <div class="details w1200">
+    {foreach $shoplist as $v}
     	<div class="deta-info1">
         	<div class="dt-if1-l f-l">
             	<div class="dt-if1-datu">
                 	<ul qie-da="">
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda1.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda2.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda3.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda4.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda5.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda6.gif" /></a></li>
-                       <li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-l-tuda7.gif" /></a></li>
+                       <li><a href="{:url('index/details/details')}"><img src="{$v['shop_logo']}" /></a></li>
                        <div style="clear:both;"></div>
                     </ul>
                 </div>
                 <div class="dt-if1-qietu">
-                	<a class="dt-qie-left f-l" href="JavaScript:;"><img src="__IMAGE__PATH__/dt-if1-qietu-left.gif" /></a>
+                	<a class="dt-qie-left f-l" href="JavaScript:;"><img src="" /></a>
                     <div class="dt-qie-con f-l">
                     	<ul qie-xiao="">
-                        	<li class="current"><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu1.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu2.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu3.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu4.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu5.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu6.gif" /></a></li>
-                        	<li><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-if1-qietu7.gif" /></a></li>
+                        	<li class="current"><a href="{:url('index/details/details')}"><img src="" /></a></li>
+                        	
             				<div style="clear:both;"></div>
                         </ul>
                     </div>
-                	<a class="dt-qie-right f-r" href="JavaScript:;"><img src="__IMAGE__PATH__/dt-if1-qietu-right.gif" /></a>
+                	<a class="dt-qie-right f-r" href="JavaScript:;"><img src="" /></a>
                 </div>
                 <div class="dt-if1-fx">
                 	<span>商品编码:128618586</span>
-                    <p>分享到：<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-xl.gif" /></a><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-kj.gif" /></a><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-wx.gif" /></a></p>
+                    <p>分享到：<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/dt-xl.gif" /></a><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/dt-kj.gif" /></a><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/dt-wx.gif" /></a></p>
                 </div>
             </div>
             
         	<div class="dt-if1-m f-l">
             	<div class="dt-ifm-hd">
-                	<h3><a href="{:url('index/details/details')}">【洋河花园】三峡生态鱼庄</a></h3>
-                	<p>仅售356元！价值515元的8人餐，可免费使用包间</p>
+                	<h3><a href="{:url('index/details/details')}">{$v['shop_name']}</a></h3>
+                	<p>{$v['shop_content']}</p>
                 </div>
                 <div class="dt-ifm-gojia">
                 	<dl>
                     	<dt>宅购价</dt>
                         <dd>
                         	<p class="p1">
-                               <span class="sp1">¥17.50</span><span class="sp2">29.50</span>
+                               <span class="sp1" id="money">{$v['shop_price']}</span><span class="sp2">29.50</span>
                             </p>
                             <p class="p2">
-                            	<span class="sp1"><img src="__IMAGE__PATH__/dt-ifm-sp1-img.gif" />5分</span><span class="sp2">共有 2 条评价</span>
+                            	<span class="sp1"><img src="__IMAGE__INDEX__/dt-ifm-sp1-img.gif" />5分</span><span class="sp2">共有 2 条评价</span>
                             </p>
                         </dd>
                         <div style="clear:both;"></div>
@@ -75,45 +65,71 @@
                     </dd>
                     <div style="clear:both;"></div>
                 </dl>
-                <dl class="dt-ifm-box1">
-                	<dt>时间</dt>
-                    <dd>
-                    	<select>
-                        	<option>请选择就餐日期</option>
-                        	<option>2015-8-31</option>
-                        	<option>2015-8-32</option>
-                        </select>
-                    	<select>
-                        	<option>请选择就餐时段</option>
-                        	<option>上午</option>
-                        	<option>下午</option>
-                        </select>
-                        <p>如果提前两天预定，还可以享受折扣哦！</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
                 <dl class="dt-ifm-box3">
                 	<dt>数量</dt>
                     <dd>
                     	<a class="box3-left" href="JavaScript:;">-</a>
-                        <input type="text" value="1">
+                        <input type="text" id="number" value="1">
                     	<a class="box3-right" href="JavaScript:;">+</a>
                     </dd>
                     <div style="clear:both;"></div>
                 </dl>
                 <div class="dt-ifm-box4">
-                	<button class="btn1" onclick="buy()">立即购买</button>
-                    <script type="text/javascript">
-                    function buy()
-                    {
-                        document.location = "{:url('index/personal/cart')}";
-                    }
-                    </script>
-                	<button class="btn2">加入购物车</button>
-                	<button class="btn3">收藏</button>
+                	<button class="btn1" onclick="GoShopping({$v['shop_id']})" >立即购买</button>
+                    <button class="btn2" onclick="addCart({$v['shop_id']})" >加入购物车</button>
+                	<button class="btn3"  id="shoucang" onclick="collect({$v['shop_id']})" >收藏</button>
                 </div>
             </div>
-            
+            <script type="text/javascript">
+            //立即购买
+            function GoShopping(obj)
+            {
+                var data = {shop_id:obj,money:$('#money').html(),number:$('#number').val()};
+                $.post("{:url('index/personal/shopChe')}",data,function(data){
+                    if (data == 1) {
+                        alert("正在为小主添加购物车中....");
+                        document.location = "{:url('index/personal/cart')}?shop_id="+obj;
+                    }else{
+                        alert('对不起,您没有登陆,不可以购买哦');
+                        document.location = "{:url('index/register/login')}";
+                    }
+                },'json');
+
+            }
+
+            //添加购物车
+            function addCart(obj)
+            {
+                var data = {shop_id:obj,money:$('#money').html(),number:$('#number').val()};
+                $.post("{:url('index/personal/shopChe')}",data,function(data){
+                    if (data == 1) {
+                        alert('添加购物车成功');
+                    }else{
+                        alert('添加购物车失败,请登录后在进行添加');
+                        document.location = "{:url('index/register/login')}";
+                    }
+                },'json');
+            }
+
+            //添加收藏
+            function collect(obj)
+            {
+                var shop_id = obj;
+                $.get("{:url('index/personal/insertColle')}",{shop_id:shop_id},function(data){
+                    if (data == 1) {
+                        $('#shoucang').css('display','none');
+                        alert('收藏成功,请到您的个人中心查看...');
+                    }else{
+                        alert('请登录后在进行收藏');    
+                        document.location = "{:url('index/register/login')}";
+                    }
+                },'json');
+            }
+            </script>
+
+        
+
+         
         	<div class="dt-if1-r f-r">
             	<div class="dt-ifr-hd">
                 	<div class="dt-ifr-tit">
@@ -146,7 +162,7 @@
                     	<h3>同类推荐</h3>
                     </div>
                     <dl>
-                    	<dt><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-ifr-fd-dt-tu.gif" /></a></dt>
+                    	<dt><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/dt-ifr-fd-dt-tu.gif" /></a></dt>
                         <dd>
                         	<a href="{:url('index/details/details')}">【观音桥】罗兰钢管舞舞蹈体验</a>
                             <p>¥9.90</p>
@@ -154,7 +170,7 @@
                         <div style="clear:both;"></div>
                     </dl>
                     <dl>
-                    	<dt><a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/dt-ifr-fd-dt-tu.gif" /></a></dt>
+                    	<dt><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/dt-ifr-fd-dt-tu.gif" /></a></dt>
                         <dd>
                         	<a href="{:url('index/details/details')}">【观音桥】罗兰钢管舞舞蹈体验</a>
                             <p>¥9.90</p>
@@ -165,7 +181,7 @@
             </div>
             <div style="clear:both;"></div>
         </div>
-        
+        {/foreach}
         <div class="deta-info2">
         	<div class="dt-if2-l f-l">
             	<div class="if2-l-box1">
@@ -174,17 +190,17 @@
                     </div>
                     <ul>
                     	<li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li style="border-bottom:0;">
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
@@ -196,17 +212,17 @@
                     </div>
                     <ul>
                     	<li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li style="border-bottom:0;">
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a class="if2-li-tit" href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
@@ -222,21 +238,21 @@
                 </ul>
                 <div style="border:1px solid {:url('index/details/details')}DBDBDB;" com-det-show="dt1">
                 	<div class="if2-tu1">
-                        <img src="__IMAGE__PATH__/if2-tu1.gif" />
-                        <img src="__IMAGE__PATH__/if2-tu2.gif" style="margin-top:47px;" />
+                        <img src="__IMAGE__INDEX__/if2-tu1.gif" />
+                        <img src="__IMAGE__INDEX__/if2-tu2.gif" style="margin-top:47px;" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="if2-tu2">
-                        <img src="__IMAGE__PATH__/if2-tu3.gif" />
+                        <img src="__IMAGE__INDEX__/if2-tu3.gif" />
                         <div style="clear:both;"></div>
                     </div>
                     <div class="if2-tu3">
-                        <img src="__IMAGE__PATH__/if2-tu4.gif" />
+                        <img src="__IMAGE__INDEX__/if2-tu4.gif" />
                     </div>
                     <ul class="if2-tu4">
-                        <li><img src="__IMAGE__PATH__/if2-tu5.gif" /></li>
-                        <li><img src="__IMAGE__PATH__/if2-tu6.gif" /></li>
-                        <li><img src="__IMAGE__PATH__/if2-tu7.gif" /></li>
+                        <li><img src="__IMAGE__INDEX__/if2-tu5.gif" /></li>
+                        <li><img src="__IMAGE__INDEX__/if2-tu6.gif" /></li>
+                        <li><img src="__IMAGE__INDEX__/if2-tu7.gif" /></li>
                         <div style="clear:both;"></div>
                     </ul>
                 </div>
@@ -276,7 +292,7 @@
                     </ul>
                     <dl>
                     	<dt>
-                        	<a href="{:url('')}"><img src="__IMAGE__PATH__/box3-dt-tu.gif" /></a>
+                        	<a href="{:url('')}"><img src="__IMAGE__INDEX__/box3-dt-tu.gif" /></a>
                         </dt>
                         <dd>
                         	<a href="{:url('')}">胡**</a>
@@ -287,7 +303,7 @@
                     </dl>
                     <dl>
                     	<dt>
-                        	<a href="comment.html"><img src="__IMAGE__PATH__/box3-dt-tu.gif" /></a>
+                        	<a href="comment.html"><img src="__IMAGE__INDEX__/box3-dt-tu.gif" /></a>
                         </dt>
                         <dd>
                         	<a href="comment.html">胡**</a>
@@ -361,42 +377,42 @@
                     </div>
                     <ul>
                     	<li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
                         <li>
-                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__PATH__/if2-l-box1-tu1.gif" /></a>
+                        	<a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/if2-l-box1-tu1.gif" /></a>
                             <a href="{:url('index/details/details')}">乐事Lay's 无限薯片（翡翠黄瓜味）104g/罐</a>
                             <p>¥6.90</p>
                         </li>
