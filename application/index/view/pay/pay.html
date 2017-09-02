@@ -41,6 +41,7 @@
        
         <div class="cart-con-info">
         {volist name='shoplist' id='vo'}
+        {if $vo['is_remove'] == 0}
             <div class="cart-con-tit" style="margin:20px 0 5px;">
                 <p class="p1" style="width:400px;">
                     <input type="checkbox" value="" name="hobby">
@@ -60,7 +61,7 @@
                     <a href="#"><img src="{$vo.shop_logo}" width="120" /></a>
                 </div>
                 <div class="mid-font f-l" style="margin-right:40px;">
-                    <a href="#" style="width:205px" id="shopName" >{$vo.shop_name}<br>{$vo.shop_content}</a>
+                    <a href="#" style="width:205px" id="shopName" >{$vo.shop_name}<br></a>
                 </div>
                 <div class="mid-guige1 f-l" style="margin-right:40px;">
                     <p></p>
@@ -84,6 +85,7 @@
                 </div>
                 <div style="clear:both;"></div>
             </div>
+            {/if}
          {/volist}
             <div class="info-heji">
                 <p class="f-r">店铺合计(含运费)：¥<span>{$setlement}</span></p>
@@ -92,7 +94,7 @@
 
             <div class="info-tijiao">
                 <p class="p1">实付款：<span id="setlement" >{$setlement}</span></p>
-                <button class="btn" onclick="submitOrder();" >提交订单</button>
+                <button class="btn" onclick="submitOrder();" >支付</button>
                 <script type="text/javascript">
                 //提交
                 function submitOrder(){

@@ -15,12 +15,9 @@
     <div class="banner-box">
     	<div class="banner w1200">
         	<ul>
-            	<li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/01.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/02.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/03.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/04.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/05.jpg" /></a></li>
-                <li><a href="JavaScript:;"><img src="__IMAGE__INDEX__/index/06.jpg" /></a></li>
+            {volist name='active' id='act'}
+            	<li><a href="JavaScript:;"><img src="{$act.pic}" /></a></li>
+            {/volist}            
                 <div style="clear:both;"></div>
             </ul>
             <a href="JavaScript:;" class="bnr bnr-left"><</a>
@@ -32,14 +29,14 @@
     <div class="advertisement w1200">
     	<p style="text-align:center;font-size:15px;color:#000;line-height:74px;">推荐优质商家</p>
     </div>
-    
+ 
     <!--热门推荐-->
     <div class="hot-recommend w1200">
     	<h3>热门商家推荐</h3>
-       
+      
         <ul class="">
  
-         {foreach $eachShops as $key => $value}
+            {foreach $eachShops as $key => $value} 
         	<li class="ys1">
             	<a href="{:url('index/shopslogo/shopslogo')}?shops_id={$value['shops_id']}" class="ys2-a1" >
                     <img src="{$value['shops_logo']}?shops_id={$value['shops_id']}" width="280" />
@@ -50,8 +47,8 @@
                     <a href="{:url('index/shopslogo/shopslogo')}?shops_id={$value['shops_id']}">点击进店铺</a>
                 </div>
             </li>
-            
-        {/foreach}
+            {/foreach} 
+        
         <div style="clear:both;"></div>
         </ul>        
     </div>
@@ -63,157 +60,19 @@
     
     <!--食品分类-->
     <ul class="advertisement2">
-    	<li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li><a href="{:url('index/shopslogo/shopslogo')}"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
-        <li style="border-right:none;"><a href="#"><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+       
+    	<li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
+        <li><a><img src="__IMAGE__INDEX__/lanyuelian.gif" /></a></li>
         <div style="clear:both;"></div>
     </ul>
-    
-    <!--2 餐饮娱乐-->
-    <div class="dining w1200">
-    	<div class="title1">
-        	<h3><span style="color:#FDA30C;">2F </span>食品小吃</h3>
-            <ul>
-            	<li><a href="{:url('index/details/details')}">豆制品小吃</a></li>
-                <li><a href="{:url('index/details/details')}">辣条回忆</a></li>
-                <li><a href="{:url('index/details/details')}">小当家方方面</a></li>
-                <li><a href="{:url('index/details/details')}">桂花糕</a></li>
-                <div style="clear:both;"></div>
-            </ul>
-            <div style="clear:both;"></div>
-        </div>
-        <div class="din-con">
-        	<div class="lin-l f-l">
-            	<div class="lin-l-t">
-                	<a href="#"><img src="__IMAGE__INDEX__/din-l-tu.gif" /></a>
-                </div>
-            	<div class="lin-l-b">
-                	<a href="{:url('index/details/details')}">甜食</a>
-                	<a href="{:url('index/details/details')}">辣条</a>
-                	<a href="{:url('index/details/details')}">特色小吃</a>
-                	<a href="{:url('index/details/details')}">地方小吃</a>
-                	<a href="{:url('index/details/details')}">面包甜点</a>
-                	<a href="{:url('index/details/details')}">零食</a>
-                	<a href="{:url('index/details/details')}">茶馆</a>
-                	<a href="{:url('index/details/details')}">KTV</a>
-                	<a href="{:url('index/details/details')}">酒吧</a>
-                	<a href="{:url('index/details/details')}">休闲吧</a>
-                	<a href="{:url('index/details/details')}">台球厅</a>
-                	<a href="{:url('index/details/details')}">网吧</a>
-                	<a href="{:url('index/details/details')}">酒店</a>
-                </div>
-            </div>
-        	<div class="lin-m f-l">
-            	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
-                        <p class="p1">5斤装仅需68v顺丰包邮</p>
-                        <p class="p2"><span>¥46.54</span>  起</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
-                        <p class="p1">5斤装仅需68v顺丰包邮</p>
-                        <p class="p2"><span>¥46.54</span>  起</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl style="border-bottom:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-m-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">新疆鲜核桃</a></h3>
-                        <p class="p1">5斤装仅需68v顺丰包邮</p>
-                        <p class="p2"><span>¥46.54</span>  起</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-            </div>
-        	<div class="lin-r f-l">
-            	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-            	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-            	<dl>
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl style="border-right:none;">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-            	<dl style="border-bottom:none">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-                <dl style="border-right:none;border-bottom:none">
-                	<dt class="f-l"><a href="{:url('index/details/details')}"><img src="__IMAGE__INDEX__/din-r-tu1.gif" /></a></dt>
-                    <dd class="f-l">
-                    	<h3><a href="{:url('index/details/details')}">7月轰炸美食城</a></h3>
-                        <p class="p1">包邮爆款低至</p>
-                        <p class="p2">买一赠一</p>
-                    </dd>
-                    <div style="clear:both;"></div>
-                </dl>
-            </div>
-            <div style="clear:both;"></div>
-        </div>
-    </div>
+   
+ 
     
  
     

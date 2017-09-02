@@ -5,7 +5,6 @@
 <title>钱峰网-评价</title>
 <link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
 <link rel="stylesheet" type="text/css" href="__CSS__INDEX__/shopping-mall-index.css" />
-<!-- <link href="__CSS__INDEX__/bootstrap.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" type="text/css" href="__CSS__INDEX__/star-rating.css" media="all"/>
 <script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
 <script type="text/javascript" src="__JS__INDEX__/zhonglin.js"></script>
@@ -20,16 +19,17 @@ h1, .h1, h2, .h2, h3, .h3{ margin-top:0; margin-bottom:0;}
 
   <!--内容开始-->
     <div class="evaluate w1200">
+    {volist name='eachShopList' id='list'}
     	<dl class="eva-info1">
-        	<dt><a href="#"><img src="__IMAGE__INDEX__/want-evaluate-tu.gif" /></a></dt>
+        	<dt><a href="#"><img src="{$list.shop_logo}" width="230" height="241" /></a></dt>
             <dd>
-            	<h3><a href="#">买一送三 正品ICOOK韩式耐热玻璃饭盒微波炉保鲜盒密封碗便当套装</a></h3>
+            	<h3><a href="#">{$list.shop_name}</a></h3>
                 <ul>
                 	<li>
-                    	<span>价格</span><p class="p1">¥ 110.00 元</p>
+                    	<span>价格</span><p class="p1">¥ {$list.shop_price} 元</p>
                     </li>
                 	<li>
-                    	<span>配送</span><p>快递:  0.00</p>
+                    	<span>配送</span><p>快递:(包邮)</p>
                     </li>
                 	<li>
                     	<span>评价</span><p>4.8分 (累计评价 43227 )</p>
@@ -38,12 +38,14 @@ h1, .h1, h2, .h2, h3, .h3{ margin-top:0; margin-bottom:0;}
                     	<span>颜色分类</span><p>长410ML*2，赠餐具</p>
                     </li>
                 	<li>
-                    	<span>订单号</span><p>20151223654586</p>
+                    	<span>订单时间</span><p>{$list.shop_time}</p>
+                        <input type="hideen" name="id" id="shop_id" style="display:none;" value="{$list.shop_id}" />
                     </li>
                 </ul>
             </dd>
             <div style="clear:both;"></div>
         </dl>
+        {/volist}
         <dl class="eva-info2">
         	<dt>
             	<p class="p1">好评率</p>
@@ -67,38 +69,30 @@ h1, .h1, h2, .h2, h3, .h3{ margin-top:0; margin-bottom:0;}
             </dd>
             <div style="clear:both;"></div>
         </dl>
+
         <div class="eva-info3">
         	<div class="eva-if3-l f-l">
             	<dl class="if3-l-dl1">
-                	<dt>商品评价</dt>
-                    <dd><textarea></textarea></dd>
-            		<div style="clear:both;"></div>
-                </dl>
-            	<dl class="if3-l-dl2">
-                	<dt>服务评价</dt>
-                    <dd><textarea></textarea></dd>
-            		<div style="clear:both;"></div>
-                </dl>
-            	<dl class="if3-l-dl3">
-                	<dt>晒图片</dt>
+                	<dt>商品评价</dt>  <dt>服务评价</dt>
                     <dd>
-                    	<a href="JavaScript:;">
-                        	<img src="__IMAGE__INDEX__/dl3-tu1.gif" />
-                            <input type="file" class="img1" />
-                        </a>
-                        <a href="JavaScript:;">
-                        	<img src="__IMAGE__INDEX__/dl3-tu2.gif" />
-                            <input type="file" class="img1" />
-                        </a>
-                        <p>上传图片     1/5</p>
-                        <div style="clear:both;"></div>
+                        <textarea id="content" > 
+                        </textarea>
                     </dd>
             		<div style="clear:both;"></div>
                 </dl>
                 <button class="eva-btn" onclick="dianji()">提交评价</button>
                 <script type="text/javascript">
                 function dianji(){
-                    document.location = "{:url('index/personal/purchasenum')}";
+                    var content = $('#content').val();
+                    var shop_id = $('#shop_id').val();
+                    $.post("{:url('index/comment/commentInser')}",{content:content,shop_id:shop_id },function(data){
+                             if (data) {
+                                alert('评论成功');
+                                document.location = "{:url('index/details/details')}?shop_id="+shop_id;
+                             }
+                             
+                    },'json');
+                   
                 }
                 </script>
             </div>

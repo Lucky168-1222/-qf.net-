@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Db;
 use app\index\controller\Auth;
-use app\index\model\Pay;
+use app\index\model\Pay as PayModel;
 use app\index\model\Card;
 use app\index\model\Address;
 use app\index\model\User;

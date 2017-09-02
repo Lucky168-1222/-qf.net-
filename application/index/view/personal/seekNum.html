@@ -39,33 +39,12 @@
                 </div>
             </div>
             
-            <div class="browse">
-                {volist name='Collectlist' id='vo'}
-                {if $vo['is_collect'] == 1}
-            	<div class="browse-hd">
-                	<p>{$vo.collect_time = date("Y-m-d")}</p><span>{$vo.collect_id}  件宝贝</span>
-                </div>
-                <ul>
-                	<li>
-                        <div class="li-top">
-                            <a href="{:url('index/details/details')}" class="li-top-tu"><img src="{$vo.shop_logo}" /></a>
-                            <p class="jiage"><span class="sp1">￥{$vo.shop_price}</span><span class="sp2">￥209</span></p>
-                        </div>
-                        <a href="{:url('index/details/details')}" class="miaoshu">{$vo.shop_content}</a>
-                        <p class="weike"><button onclick="cancel({$vo['shop_id']})" >取消收藏</button></p>
-                    </li>
-                    <div style="clear:both;"></div>
-                </ul>
-                {else}
-                <div style="font-size:28px;text-align:center;" >您什么宝贝都没有收藏！</div>
-                {/if}
-                {/volist}
-            </div>
+           
             
             <!--分页-->
           
             	<div class="pag-left f-l">
-                <ul class="left-m f-l">{$page}</ul>
+                <ul class="left-m f-l"></ul>
                 <div style="clear:both;"></div>
                 </div>
  

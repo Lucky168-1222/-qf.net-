@@ -26,6 +26,19 @@ class Personal extends Auth
 		echo 1;
 	}
 
+	//确认收货
+	public function confirmReceipt()
+	{
+		$order_id = $_GET['order_id'];
+		$order = new Order();
+		$updateOrder = $order->updateReceipt($order_id);
+		if ($updateOrder){
+			$this->success('已确认收货');
+		}else{
+			$this->error('请重新点击收货');
+		}
+	}
+
 	//修改收货地址
 	public function updateRess()
 	{
@@ -100,7 +113,7 @@ class Personal extends Auth
 			$data['shop_id'] = $_POST['shop_id'];
 			$data['shop_name'] = $_POST['shop_name'];
 			$data['order_time'] = time();
-			$data['order_status'] = 1;
+			$data['order_status'] = '1';
 			$data['shop_express'] = $_POST['express'];
 			$data['order_num'] = $_POST['number'];
 			$data['order_money'] = $_POST['order_money'];
@@ -118,8 +131,6 @@ class Personal extends Auth
 		$u_id = session('user_id');
 		$order = new Order();
 		$seekOrder = $order->eachOrder($u_id);
-		$page = $seekOrder->render();
-		$this->assign('page',$page);
 		$this->assign('seekOrder',$seekOrder);
 		$this->head();
 		return $this->fetch();
@@ -252,7 +263,7 @@ class Personal extends Auth
 	}
 
 	//购买记录
-	public function purchaseNum() {
+	public function purchasenum() {
 		$this->head();
 		return $this->fetch();
 	}

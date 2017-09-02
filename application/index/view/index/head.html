@@ -8,13 +8,14 @@
     <link rel="stylesheet" type="text/css" href="__CSS__INDEX__/style.css" />
     <link rel="stylesheet" type="text/css" href="__CSS__INDEX__/index.css" />
     <script type="text/javascript" src="__JS__INDEX__/jquery.js"></script>
-   <link href="__CSS__INDEX__/common.css" rel="stylesheet" type="text/css" />
-    <link href="__CSS__INDEX__/iconfont.css"  rel="stylesheet" type="text/css" />
-    <link href="__CSS__INDEX__/daohang.css" rel="stylesheet" type="text/css" />
-    <script src="__JS__INDEX__/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="__JS__INDEX__/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-    <script src="__JS__INDEX__/common_js.js" type="text/javascript"></script>
-    <script src="__JS__INDEX__/footer.js" type="text/javascript"></script>
+
+   <link href="__CSS__INDEX__/daohang1.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__INDEX__/daohang2.css"  rel="stylesheet" type="text/css" />
+    <link href="__CSS__INDEX__/daohang3.css" rel="stylesheet" type="text/css" />
+    <script src="__JS__INDEX__/daohang1.js" type="text/javascript"></script>
+    <script src="__JS__INDEX__/daohang2.js" type="text/javascript"></script>
+    <script src="__JS__INDEX__/daohang3.js" type="text/javascript"></script>
+    <script src="__JS__INDEX__/daohang4.js" type="text/javascript"></script>
 </head>
 <!--top 开始-->
 <div class="top">
@@ -49,8 +50,12 @@
     </div>
     <div class="dianji f-r">
         <div class="btn1">
+            {if $Think.session.user_id == null}
             <button class="btn1-l" id="register_id">注册</button>
             <button class="btn1-r" id="login_id">登录</button>
+            {else}
+            <button class="btn1-r" >已登录</button>
+            {/if}
             <script type="text/javascript">
             var oRegister = document.getElementById('register_id');
             oRegister.onclick = function() {
@@ -84,30 +89,15 @@
             <li ss-search="sp" class="current"><a href="javascript:;" id="shopcom">商品</a></li>
             <div style="clear:both;"></div>
         </ul>
-        <div class="srh">
-            <div class="ipt f-l">
-                <input type="text" placeholder="搜索关键字..." ss-search-show="sp" />
-            </div>
-            <button class="f-r seek" id="seek_js">搜 索</button>
-            <script type="text/javascript">
-            var oSeek = document.getElementById('seek_js');
-            oSeek.onclick = function() {
-                document.location = "{:url('index/room/room')}";
-            }
-            </script>
-            <div style="clear:both;"></div>
-        </div>
-        <ul class="sp2">
-            <li><a href="{:url('index/details/details')}">妙脆角</a></li>
-            <li><a href="{:url('index/details/details')}">乐事薯片</a></li>
-            <li><a href="{:url('index/details/details')}">一乐拉面</a></li>
-            <li><a href="{:url('index/details/details')}">小当家</a></li>
-            <li><a href="{:url('index/details/details')}">斗牛士</a></li>
-            <li><a href="{:url('index/details/details')}">尖叫</a></li>
-            <li><a href="{:url('index/details/details')}">红豆糕</a></li>
-            <li><a href="{:url('index/details/details')}">猜你喜欢</a></li>
-            <div style="clear:both;"></div>
-        </ul>
+         <form action="{:url('index/room/room')}" method="post" >
+                <div class="srh">
+                    <div class="ipt f-l">
+                        <input type="text" name="content" placeholder="搜索关键字..." id="seek_js"  ss-search-show="sp" />
+                    </div>               
+                        <input class="f-r seek" style="width:80px; height:40px;" type="submit"  name="dosubmit" value="搜索"  />
+                    <div style="clear:both;"></div>
+                </div>
+         </form>
     </div>
     <div style="clear:both;"></div>
 </div>
@@ -138,7 +128,7 @@
       {volist name='data' id='vo'}
         <li class="name">  
 
-        <div class="Menu_name"><a href="product_list.html" style="font-size:12px;" >{$vo.plate_name}</a> <span>&lt;</span></div>
+        <div class="Menu_name"><a href="{:url('index/index/classa')}?plate_id={$vo['plate_id']}" style="font-size:12px;" >{$vo.plate_name}</a> <span>&lt;</span></div>
       
         <div class="link_name">
           <p><a href="Product_Detailed.html"></a></p>
@@ -148,14 +138,12 @@
            <div class="hd_sort_list">
             <dl class="clearfix" data-tpc="1">
             {volist name='vo.path' id='value'}
-            <dt><a href="#">{$value.plate_name}<i>></i></a></dt>
-                
+            <dt><a href="{:url('index/index/classb')}?plate_id={$value['plate_id']}">{$value.plate_name}<i>></i></a></dt>
                 <dd>
                 {volist name='value.path' id='vv'}
-                <a href="#">{$vv.plate_name} </a>
+                <a href="{:url('index/index/classc')}?plate_id={$vv['plate_id']}">{$vv.plate_name} </a>
                 {/volist}
                 </dd> 
-                
             {/volist}
             </dl>
            </div><div class="Brands">
@@ -173,13 +161,10 @@
     <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>
      <!-- <a href="#" class="link_bg"><img src="images/link_bg_03.png" /></a>--> 
     <ul>
-        {volist name='eachPlate' id='plate'}
-        <li><a href="{:url('index/cosmetology/cosmetology')}">{$plate.plate_name}</a></li>
-        {/volist}
-        <li><a href="{:url('index/cosmetology/saleshops')}">预约商品</a></li>
-        {if $Think.session.user_name != null}
-        <li><a href="{:url('index/cosmetology/exchange')}">积分商城</a></li>
-        {/if}
+        
+        <li><a href="{:url('index/cosmetology/cosmetology')}">在线商城</a></li>
+       
+
         <div style="clear:both;"></div>
     </ul>
     <div style="clear:both;"></div> 

@@ -43,10 +43,9 @@
                     <div style="clear:both;"></div>
                 </dl>
                 <div class="ord-dai f-l title">
-                	<p class="active">待付款<span>1</span></p>
-                	<p>待发货<span>1</span></p>
-                	<p>待收货<span>1</span></p>
-                	<p>待评价<span>1</span></p>
+                	<p class="active">待发货<span></span></p>
+                	<p>待收货<span></span></p>
+                	<p>待评价<span></span></p>
                 </div>
                 <div style="clear:both;"></div>
             </div>
@@ -63,46 +62,13 @@
                     <p class="md-p6">操作</p>
                 </div>
                       
-                <div class="md-info active">
-                	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""><span  >待付款</span>
-                    </div>
-                    {volist name='seekOrder' id='val'}
-                    {if $val['order_status'] == 1 && $val['is_order'] == 0} 
-                    <div class="dai-con">
-                    	<dl class="dl1">
-                        	<dt>
-                                <input type="checkbox" name="hobby" value="{$val.order_id}" class="f-l">
-                                <a href="#" class="f-l"><img src="{$val.shop_logo}" width="100" /></a>
-                                <div style="clear:both;"></div>
-                            </dt>
-                            <dd>
-                          
-                                <p>{$val.shop_name}</p>
-                                <span>X 1</span>
-                            </dd>
-                            <div style="clear:both;"></div>
-                        </dl>
-                        <div class="dai-right f-l">
-                        	<P class="d-r-p1">1</P>
-                            <p class="d-r-p2">¥ {$val.shop_price} </p>
-                            <p class="d-r-p3">¥ {$val.shop_price}</p>
-                            <p class="d-r-p4"><a href="{:url('index/personal/removeOrder')}?order_id={$val.order_id}">移除订单</a><br /><a href="{:url('index/personal/cart')}">付款</a></p>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
-                    {else}
-                    {/if}
-                    {/volist}
-                </div>
-               
                 
                 <div class="md-info">
                 	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""><span>待签收</span>
+                    	<span style="color:red;">待签收</span>
                     </div>
                     {volist name='seekOrder' id='vvv'}
-                    {if $vvv['order_status'] == 2 && $val['is_order'] == 0}
+                    {if $vvv['order_status'] == 2 && $vvv['is_order'] == 0}
                     <div class="dai-con">
                     	<dl class="dl1">
                         	<dt>
@@ -118,9 +84,9 @@
                         </dl>
                         <div class="dai-right f-l">
                         	<P class="d-r-p1" style=" position:relative;top:-20px;">1br /></P>
-                            <p class="d-r-p2" style="top:-43px;">¥ {$val.shop_price}</p>
-                            <p class="d-r-p3" style="top:-43px;">¥ {$val.shop_price}</p>
-                            <p class="d-r-p4"><a href="{:url('index/personal/removeOrder')}?order_id={$val.order_id}">移除订单</a><br /><a href="#">确认签收</a><br /><a href="JavaScript:;" ckwl="">查看物流</a></p>
+                            <p class="d-r-p2" style="top:-43px;">¥ {$vvv.shop_price}</p>
+                            <p class="d-r-p3" style="top:-43px;">¥ {$vvv.shop_price}</p>
+                            <p class="d-r-p4"><br /><a href="{:url('index/personal/confirmReceipt')}?order_id='{$vvv['order_id']}'">确认签收</a><br /><a href="JavaScript:;" ckwl="">查看物流</a></p>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
@@ -131,10 +97,10 @@
                 
                 <div class="md-info">
                     <div class="dai">
-                        <input type="checkbox" name="hobby" value=""><span>已签收</span>
+                        <span style="color:red;">已签收</span>
                     </div>
                     {volist name='seekOrder' id='vv'}
-                    {if $vv['order_status'] == 3 && $val['is_order'] == 0}
+                    {if $vv['order_status'] == 3 && $vv['is_order'] == 0}
                     <div class="dai-con">
                         <dl class="dl1">
                             <dt>
@@ -150,9 +116,11 @@
                         </dl>
                         <div class="dai-right f-l">
                             <P class="d-r-p1">1<br /></P>
-                            <p class="d-r-p2">¥ {$val.shop_price}</p>
-                            <p class="d-r-p3">¥ {$val.shop_price}</p>
-                            <p class="d-r-p4" style="margin-top:20px;"><a href="#">移出订单</a><br /><a href="#">评价</a><br /><a href="#">删除</a></p>
+                            <p class="d-r-p2">¥ {$vv.shop_price}</p>
+                            <p class="d-r-p3">¥ {$vv.shop_price}</p>
+                            <p class="d-r-p4" style="margin-top:20px;"><br />
+                            <a  href="{:url('index/comment/comment')}?shop_id={$vv['shop_id']}">评价</a><br />
+                            </p>
                         </div>
                         <div style="clear:both;"></div>
                     </div>
@@ -163,9 +131,10 @@
                 
                 <div class="md-info">
                 	<div class="dai">
-                    	<input type="checkbox" name="hobby" value=""><span>完成订单</span>
+                    	<span style="color:red;">完成订单</span>
                     </div>
                     {volist name='seekOrder' id='vol'}
+                    {if $vol['order_status'] == 4 && $vol['is_order'] == 0}
                     <div class="dai-con">
                     	<dl class="dl1">
                         	<dt>
@@ -183,29 +152,24 @@
                         	<P class="d-r-p1">1<br /></P>
                             <p class="d-r-p2">¥ {$vol.shop_price}</p>
                             <p class="d-r-p3">¥ {$vol.shop_price}</p>
-                            <p class="d-r-p4" style="margin-top:20px;"><a>再来一单</a></p>
+                            <p class="d-r-p4" style="margin-top:20px;">  <a href="{:url('index/details/details')}?shop_id={$vv['shop_id']}">再来一单</a></p>
+
                         </div>
                         <div style="clear:both;"></div>
                     </div>
+                    {/if}
                     {/volist}
                 </div>
                 
-
-                <!--分页-->
-                <div class="paging">
-            	<div class="pag-left f-l">
-                    <ul class="left-m f-l">
-                       {$page}
-                    </ul>         	
-                    <div style="clear:both;"></div>
-                </div>
-            </div>
             </div>
             
         </div>
         <div style="clear:both;"></div>
-    </div>
+            <!--分页-->
+   
+
     
+    </div>
     <!--底部服务-->
     <div class="ft-service">
     	<div class="w1200">

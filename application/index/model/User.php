@@ -25,7 +25,8 @@ class User extends Model
 	//遍历首页登录数据显示
 	static public function homeHead($sess)
 	{
-		return Db::query("select * from shop_user where user_id = '$sess'");
+		$result = Db::query("select * from shop_user where user_id = '$sess'");
+		return $result;
 	}
 
 	//查询用户是否存在
