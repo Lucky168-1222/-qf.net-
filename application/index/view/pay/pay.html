@@ -41,7 +41,8 @@
        
         <div class="cart-con-info">
         {volist name='shoplist' id='vo'}
-        {if $vo['is_remove'] == 0}
+        {if $vo
+        ['is_remove'] == 0}
             <div class="cart-con-tit" style="margin:20px 0 5px;">
                 <p class="p1" style="width:400px;">
                     <input type="checkbox" value="" name="hobby">
